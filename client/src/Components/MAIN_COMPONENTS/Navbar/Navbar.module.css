@@ -1,0 +1,16 @@
+.a{
+    font-size: 14px;
+    padding: 1.6rem 0.4rem;
+    font-weight: 600;
+    color: #3c2064;
+    transition: all 0.3s ease 0s;
+}
+.a:hover{
+    color: #ff6158;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
