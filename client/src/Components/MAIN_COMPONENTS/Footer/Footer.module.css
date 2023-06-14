@@ -6,7 +6,7 @@
     background-size: 100% auto;
     background-color: #362253;
     color: #ffffff;
-    height: 500px;
+    
 }
 .first_section{
     padding: 50px 0;
@@ -68,4 +68,52 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.iconLink{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    padding: 0;
+    border: 1px solid #ffffff !important;
+    color: #ffffff;
+    margin: auto 15px auto 0;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.icon{
+    
+    transition: all 0.4s ease-in-out 0s;
+}
+
+.iconLink:hover{
+ background: #ff6158;
+}
+
+.third_section{
+    background: #ff6158;
+    color: #ffffff;
+    margin-top: 30px;
+}
+.third_section_first_div{
+    margin: 0;
+    font-weight: 300;
+    color: #ffffff;
+    padding: 9px 10px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.title_link{
+    font-weight: 300;
+    color: #ffffff;
+    padding: 9px 10px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-decoration: none;
 }
