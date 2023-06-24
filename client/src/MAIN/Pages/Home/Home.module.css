@@ -1,0 +1,276 @@
+
+.main{
+    background: #d1d1d1;
+    background-image: url('http://sbtechnosoft.com/guidepro/images/banner.jpg');
+}
+
+.banner_section{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.57143;
+    font-weight: 400;
+    color: #5d5d5d;
+    padding: 130px 0 0 0;
+   
+    text-align: center;
+}
+
+.h2{
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 60px;
+    color: #3c2064;
+    margin-top: 10px;
+    text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.9);
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+}
+.p{
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.57143;
+    font-weight: 400;
+    color: #5d5d5d;
+    margin-bottom: 10px;
+
+}
+.link{
+    background: #ff6158;
+    padding: 15px 45px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 13px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    transition-duration: 0.5s;
+    margin-bottom: 10px;
+
+}
+
+.link:hover{
+    color: white;
+}
+
+.filter_section{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffffff;
+    padding: 5px;
+    border-radius: 40px;
+    border: 1px solid #9f9f9f;
+    margin-top: 80px;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.filter_section::before{
+        bottom: 100%;
+        content: '';
+        height: 58px;
+        width: 0;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-right: 1px dotted #ffffff;
+        margin-bottom: 10px;
+}
+
+.filter_section::after{
+    bottom: 100%;
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-bottom: 10px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #ffffff;
+}
+.input_group{
+    height: calc(3em + .75rem + 2px);
+    box-shadow: none;
+    padding-left: 0;
+    border: 0;
+}
+
+
+.btn{
+    background: #ff6158;
+    padding: 20px 40px;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 36px;
+    text-transform: uppercase;
+    margin-top: 0;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    color: #fff;
+    border: none;
+}
+
+.info{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.57143;
+    font-weight: 400;
+    /* background: rgb(255, 97, 88);
+    background: -moz-linear-gradient(90deg, rgba(255, 97, 88, 1) 0%, rgba(255, 97, 88, 1) 50%, rgba(55, 35, 84, 1) 50%, rgba(55, 35, 84, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(255, 97, 88, 1) 0%, rgba(255, 97, 88, 1) 50%, rgba(55, 35, 84, 1) 50%, rgba(55, 35, 84, 1) 100%); */
+    background: linear-gradient(90deg, rgba(255, 97, 88, 1) 0%, rgba(255, 97, 88, 1) 50%, rgba(55, 35, 84, 1) 50%, rgba(55, 35, 84, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6158", endColorstr="#3c2064", GradientType=1);
+    color: #ffffff;
+  
+}
+.info_all_div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info_left{
+    
+    height: 230px;
+    display: flex;
+    align-items: center;
+}
+.left_img{
+    top: 36px;
+    left: -28px;
+    width: 250px;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 20px;
+}
+.left_h2{
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+}
+.left_p{
+    margin-bottom: 0;
+    font-size: 15px;
+    width: 400px;
+}
+
+.info_right{
+    background: url('http://sbtechnosoft.com/guidepro/images/strip-square.png') no-repeat center left / auto 100% transparent;
+    
+}
+
+.right_right{
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 700px;
+}
+
+.right_h5{
+    font-size: 15px;
+    font-weight: 600;
+    border-top: 1px solid #67597b;
+    margin-top: 20px;
+    padding: 15px 0 0 0;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+
+.third_h3{
+    color: #3c2064;
+    font-size: 45px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+    line-height: 40px;
+    display: inline-block;
+    width: 100%;
+}
+
+.first_card{
+    margin-top: 60px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0px 10px 80px rgba(0, 0, 0, 0.05);
+    transition: 0.4s;
+    height: 340px;
+}
+
+/* .first_card_icon{
+    font-size: 34px;
+    height: 120px;
+    width: 120px;
+    line-height: 85px;
+    border-radius: 50%;
+    text-align: center;
+    display: block;
+    margin: auto;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ffffff;
+    transition: 0.4s;
+    color: #3c2064;
+} */
+
+.first_card_iconn{
+    font-size: 34px;
+    height: 90px;
+    width: 90px;
+    line-height: 85px;
+    border-radius: 50%;
+    text-align: center;
+    display: block;
+    margin: auto;
+    margin-bottom: 25px;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ffffff;
+    transition: 0.4s;
+    color: #3c2064;
+    padding: 20px;
+}
+
+.first_card_iconn:hover{
+    background: #573883;
+    color: #fff;
+}
+
+.first_card:hover{
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+.first_card_h4{
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    transition: 0.4s;
+    color: #ff6158;
+}
+
+.first_card_item{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.57143;
+    font-weight: 400;
+    color: #5d5d5d;
+}
+
+
+

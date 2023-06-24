@@ -55,7 +55,8 @@ function Navbar() {
 
   
   return (
-    <Container maxWidth='lg' style={{position : 'sticky'}}>
+    <nav style={{position : 'sticky', zIndex : '999'}} >
+      <Container maxWidth='lg' style={{ top: '0px', marginBottom : '50px'}}>
       <Box sx={{ flexGrow: 1 }} style={{ backgroundColor: '#ffffff', margin: '.8rem 1rem' }} >
         <Grid container spacing={2}>
           <Grid item xs={4} md={4}>
@@ -111,6 +112,7 @@ function Navbar() {
         </Grid>
       </Box>
     </Container>
+    </nav>
   )
 }
 

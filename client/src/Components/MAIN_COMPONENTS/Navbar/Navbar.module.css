@@ -33,13 +33,20 @@
     border: none;
     border-radius: 3px;
     cursor: pointer;
+
 }
 
 .link{
     color: #fff;
     text-decoration: none;
+    transition-duration: 0.5s;
+
 
     
+}
+
+.link:hover{
+    color: white;
 }
 /* .div_link::after{
     content: '';
