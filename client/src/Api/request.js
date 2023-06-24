@@ -49,3 +49,14 @@ export const SignInEmployer = async (payload)=>{
 
     return employer;
  }
+
+ //GET SERVICES
+
+ export const getServices =async()=>{
+    let services;
+   await axios.get(`${BASE_URL}/servives`).then((res)=>{
+        services = res.data;
+    })
+
+    return services;
+ }

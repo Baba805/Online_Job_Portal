@@ -6,7 +6,8 @@ const employerModel = mongoose.model('employer', new mongoose.Schema({
     companyName : String,
     email : String,
     password : String,
-    isAdmin : String
+    isAdmin : String,
+    confirmPassword : String
 }))
 
 

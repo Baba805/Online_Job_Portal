@@ -241,7 +241,6 @@
     border: 2px solid #ffffff;
     transition: 0.4s;
     color: #3c2064;
-    padding: 20px;
 }
 
 .first_card_iconn:hover{
@@ -273,4 +272,24 @@
 }
 
 
+
+.services_card{
+    padding: 20px 20px 15px 20px;
+    text-align: center;
+    box-shadow: 0px 10px 80px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease 0s;
+    margin-top: 40px;
+}
+
+.services_h5{
+    font-size: 16px;
+    color: #1d2833;
+    font-weight: bold;
+    margin-top: 16px;
+}
+
+.services_p{
+    font-size: 14px;
+    color: #5d5d5d;
+}
 

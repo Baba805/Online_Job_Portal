@@ -9,7 +9,9 @@ const emloyeeModel = mongoose.model('employee', new mongoose.Schema({
     password : String,
     age : Number,
     isAdmin : Boolean,
-    category : String
+    category : String,
+    confirmPassword : String
+
 }))
 
 
