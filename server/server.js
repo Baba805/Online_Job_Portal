@@ -11,6 +11,7 @@ const jwt = require('jsonwebtoken');
 const services = require ('./Models/services.model');
 const servicesModel = require('./Models/services.model');
 const vacanciesModel = require('./Models/vacancies.model')
+const blogModel = require('./Models/blog.model')
 
 app.use(cors())
 // parse application/x-www-form-urlencoded
@@ -288,6 +289,57 @@ app.put('/api/vacancies/:id', async (req, res) => {
       imageUrl : imageUrl
   })
   res.status(201).send(existedVacancie)
+});
+
+// GET ALL BLOGS
+
+app.get('/api/blogs', async(req,res)=>{
+  const blogs = await blogModel.find();
+  res.status(200).json(blogs)
+})
+
+// GET BLOG BY ID
+
+app.get('/api/blogs/:id', async(req,res)=>{
+  const ID = req.params.id;
+  const blog = await blogModel.findById(ID)
+  res.status(200).json(blog)
+})
+
+// DELETE BLOG BY ID
+
+app.delete('/api/blog/:id', async (req, res) => {
+  const ID = req.params.id;
+  const deletedblog = await blogModel.findByIdAndDelete(ID)
+  res.status(203).send(deletedblog)
+})
+
+
+// POST BLOG 
+app.post('/api/blog/', async (req, res) => {
+  const {username,title,imageUrl,content} = req.body;
+  const newBlog = new blogModel({
+      username : username,
+      title : title,
+      imageUrl : imageUrl,
+      content : content
+  });
+  await newBlog.save();
+  res.status(200).send(newBlog)
+});
+
+
+// EDIT BLOG
+app.put('/api/blog/:id', async (req, res) => {
+  const {username,title,imageUrl,content}= req.body;
+  const id = req.params.id;
+  const existedBlog = blogModel.findByIdAndUpdate(id,{
+    username : username,
+    title : title,
+    imageUrl : imageUrl,
+    content : content
+  })
+  res.status(201).send(existedBlog)
 });
 
 

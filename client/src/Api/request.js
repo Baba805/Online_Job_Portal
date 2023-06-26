@@ -71,3 +71,14 @@ export const SignInEmployer = async (payload)=>{
 
     return vacancies
  }
+
+  // GET ALL BLOGS
+
+  export const getBlogs = async ()=>{
+    let blogs;
+    await axios.get(`${BASE_URL}/blogs`).then((res)=>{
+        blogs = res.data
+    })
+
+    return blogs
+ }

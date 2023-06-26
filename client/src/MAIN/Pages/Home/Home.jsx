@@ -6,13 +6,15 @@ import PlaceIcon from '@mui/icons-material/Place';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import { getServices, getvacancies } from '../../../Api/request';
+import PersonIcon from '@mui/icons-material/Person';
+import { getServices, getvacancies, getBlogs } from '../../../Api/request';
 
 
 function Home() {
 
   const [services, setServices] = useState([]);
-  const [jobs, setJobs] = useState([])
+  const [jobs, setJobs] = useState([]);
+  const [blogs, setBlogs] = useState([]);
 
 
   useEffect(() => {
@@ -26,6 +28,12 @@ function Home() {
     getvacancies().then((res) => {
       console.log("salam");
       setJobs(res)
+    })
+  }, [])
+  useEffect(() => {
+    getBlogs().then((res) => {
+      console.log("salam");
+      setBlogs(res)
     })
   }, [])
 
@@ -222,6 +230,39 @@ function Home() {
       <div style={{ textAlign: 'center', marginTop: '90px', marginBottom : '90px' }} >
           <h3 className={homeStyle.third_h3} >Our Blog</h3>
           <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" style={{ opacity: '0.3' }}  alt="" />
+        </div>
+
+        <div>
+        <Container maxWidth='xl'>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+              {blogs && blogs.map((blog)=>{
+                return(
+                  <>
+                   <Grid item xs={6} md={4} style={{display : 'flex', flexDirection : 'column' , justifyContent : 'center', alignItems: 'center'}} >
+
+                  <div className={homeStyle.blog_img} > <img src={blog.imageUrl} alt="" /> </div>
+                  <div className={homeStyle.blog_title} >
+                    <div className={homeStyle.blog_title_name} >
+                    <PersonIcon/>
+                    <p > {blog.username} </p>
+                    </div>
+                    <div className={homeStyle.blog_title_content} >
+                  <h6  className={homeStyle.blog_title_h6} > {blog.title} </h6>
+                  <p > {blog.content} </p>
+                    </div>
+                    <div style={{textAlign : 'right'}} >
+                       <Link className={homeStyle.blog_button} to= '/blog'> Read More </Link> 
+                    </div>
+                  </div>
+
+                   </Grid>
+                  </>
+                )
+              })}
+              </Grid>
+              </Box>
+              </Container>
         </div>
 
       </section>
