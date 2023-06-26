@@ -60,3 +60,14 @@ export const SignInEmployer = async (payload)=>{
 
     return services;
  }
+
+ // GET ALL VACANCIES
+
+ export const getvacancies = async ()=>{
+    let vacancies;
+    await axios.get(`${BASE_URL}/vacancies`).then((res)=>{
+        vacancies = res.data
+    })
+
+    return vacancies
+ }
