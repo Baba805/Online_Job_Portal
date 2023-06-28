@@ -12,6 +12,8 @@ const services = require ('./Models/services.model');
 const servicesModel = require('./Models/services.model');
 const vacanciesModel = require('./Models/vacancies.model')
 const blogModel = require('./Models/blog.model')
+const PriceModel = require('./Models/price.model');
+const ourTeamModel = require('./Models/ourteam.model')
 
 app.use(cors())
 // parse application/x-www-form-urlencoded
@@ -340,6 +342,107 @@ app.put('/api/blog/:id', async (req, res) => {
     content : content
   })
   res.status(201).send(existedBlog)
+});
+
+
+// GET PRICES
+app.get('/api/prices', async(req,res)=>{
+  const price = await PriceModel.find();
+  res.status(200).json(price)
+})
+
+// GET PRICES BY ID
+
+app.get('/api/prices/:id', async(req,res)=>{
+  const ID = req.params.id;
+  const price = await PriceModel.findById(ID)
+  res.status(200).json(price)
+})
+
+// DELETE PRICES BY ID
+
+app.delete('/api/prices/:id', async (req, res) => {
+  const ID = req.params.id;
+  const deletedprice = await PriceModel.findByIdAndDelete(ID)
+  res.status(203).send(deletedprice)
+})
+
+// POST PRICES 
+app.post('/api/prices/', async (req, res) => {
+  const {price,service_one,service_two,service_three,service_four,service_five} = req.body;
+  const newPrices = new PriceModel({
+    price : price,
+    service_one : service_one,
+    service_two : service_two,
+    service_three : service_three,
+    service_four : service_four,
+    service_five : service_five
+  });
+  await newPrices.save();
+  res.status(200).send(newPrices)
+});
+
+// EDIT PRICES
+app.put('/api/prices/:id', async (req, res) => {
+  const {price,service_one,service_two,service_three,service_four,service_five} = req.body;
+  const id = req.params.id;
+  const existedPrices = PriceModel.findByIdAndUpdate(id,{
+    price : price,
+    service_one : service_one,
+    service_two : service_two,
+    service_three : service_three,
+    service_four : service_four,
+    service_five : service_five
+  })
+  res.status(201).send(existedPrices)
+});
+
+
+
+// GET OURTEAM
+app.get('/api/ourteam', async(req,res)=>{
+  const ourteam = await ourTeamModel.find();
+  res.status(200).json(ourteam)
+})
+
+// GET OURTEAM BY ID
+
+app.get('/api/ourteam/:id', async(req,res)=>{
+  const ID = req.params.id;
+  const ourteam = await ourTeamModel.findById(ID)
+  res.status(200).json(ourteam)
+})
+
+// DELETE OURTEAM BY ID
+
+app.delete('/api/ourteam/:id', async (req, res) => {
+  const ID = req.params.id;
+  const deletedOurTeam = await ourTeamModel.findByIdAndDelete(ID)
+  res.status(203).send(deletedOurTeam)
+})
+
+// POST OURTEAM 
+app.post('/api/ourteam/', async (req, res) => {
+  const {name, imageUrl, posession} = req.body;
+  const newOurteam = new ourTeamModel({
+    name : name,
+    imageUrl : imageUrl,
+    posession : posession
+  });
+  await newOurteam.save();
+  res.status(200).send(newOurteam)
+});
+
+// EDIT OURTEAM
+app.put('/api/ourteam/:id', async (req, res) => {
+  const {name, imageUrl, posession} = req.body;
+  const id = req.params.id;
+  const existedOurTeam = ourTeamModel.findByIdAndUpdate(id,{
+    name : name,
+    imageUrl : imageUrl,
+    posession : posession
+  })
+  res.status(201).send(existedOurTeam)
 });
 
 

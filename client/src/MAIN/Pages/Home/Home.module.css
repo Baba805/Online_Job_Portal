@@ -381,9 +381,21 @@
     border-radius: 3px;
     transition-duration: 0.5s;
 }
+.blog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
 .blog_img{
     transform: scale(1.001);
+    transition: 0.5s all ease;
+}
+
+  .blog_card:hover .blog_img{
+    transform: scale(1.1);
     transition: 0.5s all ease;
 }
 
@@ -399,6 +411,12 @@
     padding: 20px 15px;
     line-height: 1.57143;
     font-family: 'Poppins', sans-serif;
+}
+
+
+
+.blog_card:hover .blog_title{
+    background: #ffc6c3;
 }
 
 
@@ -440,5 +458,243 @@
     background: #ff6158;
     border: none;
     border-radius: 3px;
+}
+
+
+    
+
+.subscription {
+    margin-top: 80px;
+    text-align: center;
+    background-image: url('http://sbtechnosoft.com/guidepro/images/subscribe-bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    color: rgb(255, 255, 255);
+    position: relative;
+    padding: 70px 0px 75px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.subscription::before{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    content: "";
+    z-index: 0;
+    background: rgba(55, 35, 84, 0.8);
+}
+
+.subscription > h3{
+    font-size: 45px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    position: relative;
+    z-index: 1;
+    line-height: 50px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.subscription > p{
+    font-size: 17px;
+    margin: 10px 0 0 0;
+    line-height: 28px;
+    display: inline-block;
+    position: relative;
+}
+.subscription_input{
+    border-radius: 30px 0 0 30px;
+    padding-left: 30px;
+    min-height: 60px;
+    box-shadow: none;
+    border: 1px solid #ced4da;
+    width: 300px;
+}
+  .subscription_button{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .375rem 2rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #ff6158;
+    border: 1px solid #ff6158;
+    border-radius: 0 30px 30px 0;
+    font-weight: bold;
+    min-height: 60px;
+    cursor: pointer;
+}
+
+.price{
+    background: #f2f2f2;
+    text-align: center;
+    transform: perspective(1px) translateZ(0);
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    padding-bottom: 40px;
+    margin-top: 40px;
+}
+
+.price::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ff6158;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    border-radius: 5px;
+}
+
+.price:hover{
+    background: #f2f2f2;
+    text-align: center;
+    transform: perspective(1px) translateZ(0);
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    padding-bottom: 40px;
+    margin-top: 40px;
+}
+
+.price_title{
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #372353;
+    padding: 10px;
+    border-bottom: 1px solid #4f4164;
+}
+.price_head{
+    background: #372353;
+    padding: 20px 20px 20px 20px;
+    position: relative;
+}
+.price_head > h4{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 80px;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.price_head > p{
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+.price_head::after{
+    content: '';
+    background: url('http://sbtechnosoft.com/guidepro/images/price-box-tail.png') no-repeat top center / 100% auto;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 32px;
+}
+
+.price_ul{
+    margin: 0;
+    padding: 30px 10px;
+    margin-top: .5rem;
+    list-style: none;
+
+}
+
+
+.price_ul > li {
+    position: relative;
+    padding: 10px 0;
+}
+
+.price_li::before{
+    opacity: 0.35;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    content: '';
+    height: 1px;
+    width: 100%;
+    background: rgb(55, 35, 84);
+    background: -moz-linear-gradient(90deg, rgba(55, 35, 84, 0) 0%, rgba(55, 35, 84, 1) 40%, rgba(55, 35, 84, 1) 60%, rgba(55, 35, 84, 0) 100%, rgba(55, 35, 84, 0.06766456582633051) 100%, rgba(55, 35, 84, 0) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(55, 35, 84, 0) 0%, rgba(55, 35, 84, 1) 40%, rgba(55, 35, 84, 1) 60%, rgba(55, 35, 84, 0) 100%, rgba(55, 35, 84, 0.06766456582633051) 100%, rgba(55, 35, 84, 0) 100%);
+    background: linear-gradient(90deg, rgba(55, 35, 84, 0) 0%, rgba(55, 35, 84, 1) 40%, rgba(55, 35, 84, 1) 60%, rgba(55, 35, 84, 0) 100%, rgba(55, 35, 84, 0.06766456582633051) 100%, rgba(55, 35, 84, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3c2064", endColorstr="#3c2064", GradientType=1);
+}
+
+
+.price_button{
+    padding: 8px 30px;
+    font-size: 17px;
+    border-radius: 30px;
+    background: #372353;
+    color: #fff;
+    font-weight: 500;
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition-duration: 0.5s;
+}
+
+.count{
+    margin-top: 80px;
+    background: #ff6158;
+    padding: 45px 0;
+}
+
+.count_h4{
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 53px;
+    line-height: 53px;
+    font-family: 'Poppins';
+    margin: auto 0 auto 5px;
+    text-align: center;
+}
+.count_span{
+    display: block;
+    font-size: 15px;
+    line-height: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #ffffff;
+}
+.count_div1{
+    width: 0px;
+    height: 68%;
+    content: '';
+    border-right: 1px solid #fbb9b6;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
 }
 

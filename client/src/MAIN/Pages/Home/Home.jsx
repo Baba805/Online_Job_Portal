@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PersonIcon from '@mui/icons-material/Person';
-import { getServices, getvacancies, getBlogs } from '../../../Api/request';
+import { getServices, getvacancies, getBlogs, getPrices } from '../../../Api/request';
 
 
 function Home() {
@@ -15,6 +15,9 @@ function Home() {
   const [services, setServices] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [blogs, setBlogs] = useState([]);
+  const [prices, setPrices] = useState([]);
+
+
 
 
   useEffect(() => {
@@ -34,6 +37,12 @@ function Home() {
     getBlogs().then((res) => {
       console.log("salam");
       setBlogs(res)
+    })
+  }, [])
+  useEffect(() => {
+    getPrices().then((res) => {
+      console.log("salam");
+      setPrices(res)
     })
   }, [])
 
@@ -185,7 +194,7 @@ function Home() {
 
 
       <section className={homeStyle.current_jobs}>
-        <div style={{ textAlign: 'center', marginTop: '90px', marginBottom : '90px' }} >
+        <div style={{ textAlign: 'center', marginTop: '90px', marginBottom: '90px' }} >
           <h3 className={homeStyle.third_h3} >Current Jobs</h3>
           <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" alt="" />
         </div>
@@ -198,20 +207,20 @@ function Home() {
                   <>
                     <Grid item xs={6} md={4} >
 
-                     <div className={homeStyle.jobs_card} >
-                     <div className={homeStyle.jobs_img} >
-                        <img src={vacancie.imageUrl} alt="" />
+                      <div className={homeStyle.jobs_card} >
+                        <div className={homeStyle.jobs_img} >
+                          <img src={vacancie.imageUrl} alt="" />
+                        </div>
+                        <div className={homeStyle.jobs_title} >
+                          <h4 className={homeStyle.jobs_title_h4} > {vacancie.name} </h4>
+                          <p className={homeStyle.jobs_title_p}  >   <img src="http://sbtechnosoft.com/guidepro/images/money-bag-icon.png" alt="" /> $  {vacancie.sale}  </p>
+                          <p className={homeStyle.jobs_title_p_} style={{ marginTop: '10px' }} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
+                        </div>
+                        <div className={homeStyle.jobs_buttons} >
+                          <button className={homeStyle.jobs_button_apply} >Apply Now</button>
+                          <button className={homeStyle.jobs_button_full} >Full Time</button>
+                        </div>
                       </div>
-                      <div className={homeStyle.jobs_title} >
-                        <h4 className={homeStyle.jobs_title_h4} > {vacancie.name} </h4>
-                       <p  className={homeStyle.jobs_title_p}  >   <img src="http://sbtechnosoft.com/guidepro/images/money-bag-icon.png" alt="" /> $  {vacancie.sale}  </p>
-                        <p className={homeStyle.jobs_title_p_} style={{marginTop : '10px'}} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
-                      </div>
-                      <div className={homeStyle.jobs_buttons} >
-                        <button className={homeStyle.jobs_button_apply} >Apply Now</button>
-                        <button className={homeStyle.jobs_button_full} >Full Time</button>
-                      </div>
-                     </div>
 
                     </Grid>
 
@@ -227,44 +236,157 @@ function Home() {
       </section>
 
       <section className={homeStyle.blog}>
-      <div style={{ textAlign: 'center', marginTop: '90px', marginBottom : '90px' }} >
+        <div style={{ textAlign: 'center', marginTop: '90px', marginBottom: '90px' }} >
           <h3 className={homeStyle.third_h3} >Our Blog</h3>
-          <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" style={{ opacity: '0.3' }}  alt="" />
+          <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" style={{ opacity: '0.3' }} alt="" />
         </div>
 
         <div>
+          <Container maxWidth='xl'>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={2}>
+                {blogs && blogs.map((blog) => {
+                  return (
+                    <>
+                      <Grid item xs={6} md={4} className={homeStyle.blog_card} >
+
+                        <div className={homeStyle.blog}>
+                          <div className={homeStyle.blog_img} > <img src={blog.imageUrl} alt="" /> </div>
+                          <div className={homeStyle.blog_title} >
+                            <div className={homeStyle.blog_title_name} >
+                              <PersonIcon />
+                              <p > {blog.username} </p>
+                            </div>
+                            <h6 className={homeStyle.blog_title_h6} > {blog.title} </h6>
+                            <div className={homeStyle.blog_title_content} >
+
+                              <p > {blog.content} </p>
+                            </div>
+                            <div style={{ textAlign: 'right' }} >
+                              <Link className={homeStyle.blog_button} to='/blog'> Read More </Link>
+                            </div>
+                          </div>
+                        </div>
+
+                      </Grid>
+                    </>
+                  )
+                })}
+              </Grid>
+            </Box>
+          </Container>
+        </div>
+
+      </section>
+
+      <section className={homeStyle.subscription} >
+        <h3>Subscribe</h3>
+        <p>Get weekly top new jobs delivered to your inbox</p>
+        <Grid container spacing={2}>
+          <Grid xs={12} style={{ position: 'relative', display: 'inline-block', marginTop: '40px' }} >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <input className={homeStyle.subscription_input} type='email' placeholder='Enter Email Adress' />
+              <button className={homeStyle.subscription_button} type='submit'>SUBCRIBE</button>
+            </div>
+          </Grid>
+
+        </Grid>
+      </section>
+
+      <section  >
+        <div style={{ textAlign: 'center', marginTop: '90px', marginBottom: '90px' }} >
+          <h3 className={homeStyle.third_h3} >Our Price Table</h3>
+          <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" alt="" />
+        </div>
+
+        <div>
+          <Container maxWidth='xl'>
+            <Box sx={{ flexGrow: 1 }}>
+              <Grid container spacing={2}>
+                {prices && prices.map((price) => {
+                  return (
+                    <>
+                      <Grid item xs={6} md={4} className={homeStyle.price_card} >
+                        <div className={homeStyle.price} >
+                          <div className={homeStyle.price_title} > DEDICATED SERVERS</div>
+                          <div className={homeStyle.price_head} >
+                            <h4> $ {price.price}  </h4>
+                            <p>PER MONTH</p>
+                          </div>
+                          <ul className={homeStyle.price_ul} >
+                            <li className={homeStyle.price_li} > {price.service_one} </li>
+                            <li className={homeStyle.price_li} > {price.service_two} </li>
+                            <li className={homeStyle.price_li} > {price.service_three} </li>
+                            <li className={homeStyle.price_li} > {price.service_four} </li>
+                            <li className={homeStyle.price_li} > {price.service_five} </li>
+                          </ul>
+                          <button className={homeStyle.price_button}> Sign Up </button>
+                        </div>
+                      </Grid>
+                    </>
+                  )
+                }
+
+                )
+                }
+
+              </Grid>
+            </Box>
+          </Container>
+        </div>
+
+      </section>
+
+      <section className={homeStyle.count} >
         <Container maxWidth='xl'>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-              {blogs && blogs.map((blog)=>{
-                return(
-                  <>
-                   <Grid item xs={6} md={4} style={{display : 'flex', flexDirection : 'column' , justifyContent : 'center', alignItems: 'center'}} >
+            <Grid item xs={12} sm={6} md={3} >
+               
+                <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
+                  <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon1.png" alt="" />
+                  <h4 className={homeStyle.count_h4} >150+</h4>
+                  <span className={homeStyle.count_span} >FACULTIES</span>
+                </div>
+                
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} >
+               
+               <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
+                 <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon2.png" alt="" />
+                 <h4 className={homeStyle.count_h4} >2300+</h4>
+                 <span className={homeStyle.count_span} >STUDENTS</span>
+               </div>
+               
+           </Grid>
+           <Grid item xs={12} sm={6} md={3} >
+               
+               <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
+                 <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon3.png" alt="" />
+                 <h4 className={homeStyle.count_h4} >40+</h4>
+                 <span className={homeStyle.count_span} >COURSES</span>
+               </div>
+               
+           </Grid>
+           <Grid item xs={12} sm={6} md={3} >
+               
+               <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
+                 <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon4.png" alt="" />
+                 <h4 className={homeStyle.count_h4} >80+</h4>
+                 <span className={homeStyle.count_span} >COUNTRIES</span>
+               </div>
+               
+           </Grid>
+            </Grid>
+          </Box>
+        </Container>
+      </section>
+      <section className={homeStyle.comments} >
 
-                  <div className={homeStyle.blog_img} > <img src={blog.imageUrl} alt="" /> </div>
-                  <div className={homeStyle.blog_title} >
-                    <div className={homeStyle.blog_title_name} >
-                    <PersonIcon/>
-                    <p > {blog.username} </p>
-                    </div>
-                    <div className={homeStyle.blog_title_content} >
-                  <h6  className={homeStyle.blog_title_h6} > {blog.title} </h6>
-                  <p > {blog.content} </p>
-                    </div>
-                    <div style={{textAlign : 'right'}} >
-                       <Link className={homeStyle.blog_button} to= '/blog'> Read More </Link> 
-                    </div>
-                  </div>
-
-                   </Grid>
-                  </>
-                )
-              })}
-              </Grid>
-              </Box>
-              </Container>
+      <div style={{ textAlign: 'center', marginTop: '90px', marginBottom: '90px' }} >
+          <h3 className={homeStyle.third_h3} >Happy Candidates</h3>
+          <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" style={{ opacity: '0.3' }} alt="" />
         </div>
-
       </section>
     </>
   )

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import Swal from 'sweetalert2'
 import {
   MDBContainer,
   MDBTabs,
@@ -58,6 +59,14 @@ function Register() {
 
   if (values.password === values.confirmPassword) {
     await SignUpEmployee(values)
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'REGISTER HAS BEEN SUCCESFULLY',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    
   
 
     
@@ -65,6 +74,7 @@ function Register() {
     navigate('/home')
   }
 }
+
 
   const employeeFormik = useFormik({
     initialValues: {

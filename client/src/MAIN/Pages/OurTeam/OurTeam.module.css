@@ -1,0 +1,142 @@
+.first_div{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    height: 100%;
+    max-width: 900px;
+    padding: 30px 0;
+    top: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.first_div::before{
+    background-image: url('http://sbtechnosoft.com/guidepro/images/man.png');
+    background-repeat: no-repeat;
+    background-position: center right 0;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-size: auto 240px;
+    width: 441px;
+    right: 0;
+    top: 0;
+}
+
+.h2{
+    font-size: 43px;
+    font-weight: 700;
+    line-height: 60px;
+    color: #3c2064;
+    margin-top: 10px;
+}
+
+.img{
+    transition: all 0.4s ease-out;
+    width: 100%;
+}
+
+.thumb{
+    overflow: hidden;
+}
+
+.thumb > img{
+    transition: all 0.4s ease-out;
+    width: 100%;
+}
+
+.thumb:hover > img{
+    transform: scale(1.1);
+}
+.social_links{
+    bottom: 0;
+    position: absolute;
+    transform: translate(-50%, 0);
+    opacity: 0;
+    /* visibility: hidden; */
+    transition: all 0.4s ease-out;
+}
+
+.thumb:hover .social_links{
+    bottom: 20px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.link{
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    font-size: 11px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    width: 28px;
+    transition: all 0.4s ease-out;
+    background-color: #ff6158;
+}
+
+.staff_content{
+    background-color: #fff;
+    padding: 25px 0;
+    position: relative;
+    text-align: center;
+    box-shadow: 0px 10px 30px 0px rgba(1, 25, 50, 0.04);
+    align-content: center;
+}
+
+.staff_content > h3{
+    font-size: 20px;
+    margin-bottom: 2px;
+    color: #002c5b;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.staff_content > h4{
+    color: #ff6158;
+}
+
+
+.count{
+    margin-top: 80px;
+    background: #ff6158;
+    padding: 45px 0;
+}
+
+.count_h4{
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 53px;
+    line-height: 53px;
+    font-family: 'Poppins';
+    margin: auto 0 auto 5px;
+    text-align: center;
+}
+.count_span{
+    display: block;
+    font-size: 15px;
+    line-height: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #ffffff;
+}
+.count_div1{
+    width: 0px;
+    height: 68%;
+    content: '';
+    border-right: 1px solid #fbb9b6;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+

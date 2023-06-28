@@ -82,3 +82,25 @@ export const SignInEmployer = async (payload)=>{
 
     return blogs
  }
+
+   // GET ALL PRICES
+
+   export const getPrices = async ()=>{
+    let price;
+    await axios.get(`${BASE_URL}/prices`).then((res)=>{
+        price = res.data
+    })
+
+    return price
+ }
+
+ // GET ALL OURTEAM
+
+ export const getOurTeam = async ()=>{
+    let ourteam;
+    await axios.get(`${BASE_URL}/ourteam`).then((res)=>{
+        ourteam = res.data
+    })
+
+    return ourteam
+ }
