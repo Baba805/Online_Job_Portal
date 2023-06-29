@@ -18,7 +18,7 @@ import {
   from 'mdb-react-ui-kit';
 import { useFormik } from 'formik';
 import { InputLabel } from '@mui/material';
-import { SignUpEmployee } from '../../../Api/request';
+import { SignUpEmployee, SignUpEmployer } from '../../../Api/request';
 import * as yup from "yup";
 
 
@@ -37,7 +37,7 @@ function Register() {
   const employerValidation = yup.object().shape({
     companyName: yup.string().required("name is required"),
     surname: yup
-    .string().required("name is required"),
+    .string().required("surname is required"),
     username: yup
       .string()
       .required("username is required"),
@@ -71,7 +71,7 @@ function Register() {
 
     
     actions.resetForm();
-    navigate('/home')
+    navigate('/login')
   }
 }
 
@@ -93,10 +93,24 @@ function Register() {
 // REGISTER FORMIK FOR EMPLOYER
 
 const employerHandleSubmit = async (values, actions)=>{
-  console.log("salam");
-  console.log(values);
-  actions.resetForm();
-    // navigate('/home')
+  if (values.password == values.confirmPassword) {
+    await SignUpEmployer(values)
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'REGISTER HAS BEEN SUCCESFULLY',
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+    actions.resetForm();
+    navigate('/login')
+  }
+    
+  
+
+    
+   
 }
 
 // const employerHandleChange = (event) => {
@@ -170,7 +184,7 @@ const employerHandleSubmit = async (values, actions)=>{
           </div>
 
          <form onSubmit={employeeFormik.handleSubmit} >
-         <MDBInput  onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.name}  name='name' wrapperClass='mb-4' label='Name' id='form11' type='text' />
+        <MDBInput  onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.name}  name='name' wrapperClass='mb-4' label='Name' id='form11' type='text' />
           <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.username}  name='username' wrapperClass='mb-4' label='Username' id='form12' type='text' />
           <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.surname}  name='surname' wrapperClass='mb-4' label='Surname' id='form13' type='text' />
           <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.email}  name='email' wrapperClass='mb-4' label='Email' id='form14' type='email' />
@@ -230,7 +244,7 @@ const employerHandleSubmit = async (values, actions)=>{
             <p className="text-center mt-3">or:</p>
           </div>
 
-         <form onSubmit={employerFormik.employerHandleSubmit} >
+         <form onSubmit={employerFormik.handleSubmit} >
          <MDBInput wrapperClass='mb-4'  onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur}  value={employerFormik.values.companyName} name='companyName'   label='Company Name' id='form22' type='text' />
           <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur}  value={employerFormik.values.username} name='username'  label='Username' id='form23' type='text' />
           <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur}  value={employerFormik.values.email}  name='email' label='Email' id='form24' type='email' />

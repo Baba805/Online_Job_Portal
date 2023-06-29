@@ -10,7 +10,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import { getServices, getvacancies, getBlogs, getPrices } from '../../../Api/request';
 
 
-function Home() {
+
+function EmployerHome() {
 
   const [services, setServices] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -198,6 +199,29 @@ function Home() {
           <h3 className={homeStyle.third_h3} >Current Jobs</h3>
           <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" alt="" />
         </div>
+
+        <Container maxWidth='xl'>
+          <Box sx={{ flexGrow: 1 }}>
+
+            <Grid container spacing={1} className={homeStyle.jobs_filter_div}  >
+            <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn} >All</button>
+              </Grid>
+              <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn} >Recent</button>
+              </Grid>
+              <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn} >Part Time</button>
+              </Grid>
+              <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn} >Full Time</button>
+              </Grid>
+              <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn}  > <Link className={homeStyle.jobs_filter_btn} style={{border : 'none'}} to='/addjob'> Add New Job </Link> </button>
+              </Grid>
+              </Grid>
+              </Box>
+              </Container>
         <Container maxWidth='xl'>
           <Box sx={{ flexGrow: 1 }}>
 
@@ -217,8 +241,7 @@ function Home() {
                           <p className={homeStyle.jobs_title_p_} style={{ marginTop: '10px' }} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
                         </div>
                         <div className={homeStyle.jobs_buttons} >
-                          <button className={homeStyle.jobs_button_apply}  type='button' disabled  >Apply Now</button>
-                          <button className={homeStyle.jobs_button_full}  >Full Time</button>
+                          <button className={homeStyle.jobs_button_full} >Full Time</button>
                         </div>
                       </div>
 
@@ -320,7 +343,7 @@ function Home() {
                             <li className={homeStyle.price_li} > {price.service_four} </li>
                             <li className={homeStyle.price_li} > {price.service_five} </li>
                           </ul>
-                          <button className={homeStyle.price_button}  type='button' disabled   > Sign Up </button>
+                          <button className={homeStyle.price_button}> Sign Up </button>
                         </div>
                       </Grid>
                     </>
@@ -392,4 +415,4 @@ function Home() {
   )
 }
 
-export default Home
+export default EmployerHome

@@ -7,22 +7,76 @@ import {
   MDBIcon
 }
 from 'mdb-react-ui-kit';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import '~mdb-ui-kit/css/mdb.min.css';
+import * as yup from "yup";
+import { SignIn } from '../../../Api/request';
+import Swal from 'sweetalert2';
+import { Formik, useFormik } from 'formik';
+import { useUserContext } from "../../../Context/UserContext";
+
 
 function Login() {
+  const [user, setUser] = useUserContext();
+  const navigate = useNavigate()
+  const validation = yup.object().shape({
+    email: yup.string().required("email is required"),
+    password : yup.string().required('password is required')
+      
+  });
+
+  const handleSubmit = async (values,actions)=>{
+    const response = await SignIn({
+      email: values.email,
+      password: values.password,
+    });
+    if (response.auth) {
+      localStorage.setItem('token',response.token);
+      localStorage.setItem('user',JSON.stringify(response.user));
+      setUser(response.user);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User signed in successfully!",
+        showConfirmButton: false,
+        timer: 1200,
+      });
+      actions.resetForm();
+      if (response.user.companyName) {
+        navigate("/employerhome");
+      }else{
+        navigate("/employeehome");
+
+      }
+    }
+  }
+  
+
+  const Formik = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    validationSchema : validation,
+    onSubmit : handleSubmit
+  })
+
+
+
   return (
     <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
 
-      <MDBInput wrapperClass='mb-4' label='Email address' id='form1' type='email'/>
-      <MDBInput wrapperClass='mb-4' label='Password' id='form2' type='password'/>
+      <form  onSubmit={Formik.handleSubmit}>
+    <MDBInput   onChange={Formik.handleChange} onBlur={Formik.handleBlur}  value={Formik.values.email}  name='email'  wrapperClass='mb-4' label='Email address' id='form1' type='email'/>
+      <MDBInput onChange={Formik.handleChange} onBlur={Formik.handleBlur}  value={Formik.values.password}    name='password' wrapperClass='mb-4' label='Password' id='form2' type='password'/>
 
       <div className="d-flex justify-content-between mx-3 mb-4">
         <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
         <a href="!#">Forgot password?</a>
       </div>
 
-      <MDBBtn className="mb-4">Sign in</MDBBtn>
+      <MDBBtn type='submit' className="mb-4">Sign in</MDBBtn>
+      </form>
 
       <div className="text-center">
         <p>Not a member? <Link to='/register'>REGISTER</Link>  </p>

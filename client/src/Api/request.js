@@ -13,18 +13,13 @@ export const SignUpEmployer = (payload)=>{
 }
 
 
-// LOGIN FOR EMPLOYEE
-export const SignInEmployee = async (payload)=>{
-   const response = await axios.post(`${BASE_URL}/login/employee`)
+// LOGIN 
+export const SignIn = async (payload)=>{
+   const response = await axios.post(`${BASE_URL}/login`,payload)
    return response.data
 }
 
 
-// LOGIN FOR EMPLOYER
-export const SignInEmployer = async (payload)=>{
-    const response = await axios.post(`${BASE_URL}/login/employer`)
-    return response.data
- }
 
 
  // GET EMPLOYEE

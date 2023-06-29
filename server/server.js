@@ -111,72 +111,99 @@ app.post('/api/register/employer', async (req,res)=>{
 
 
 
-// LOGIIN FOR EMPLOYEE
+// LOGIIN 
 
-app.post('/api/login/employee', async (req, res) => {
+app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
   const existedEmail = await emloyeeModel.findOne({ email: email });
+  const existedEmaill = await employerModel.findOne({email:email});
   // const existedPassword = await emloyeeModel.findOne({ password: password });
 
-  if (!existedEmail) {
+  if (!existedEmail &&  !existedEmaill) {
     res.json({ auth: false, message: 'user not found!' })
   }
   else{
-    const isValid = await bcrypt.compare(password, existedEmail.password);
-    const id = existedEmail._id;
-    //username password + 
-    //access token - JWT
-    //refresh token
-    const token = jwt.sign({id}, "Metalica", {
-        expiresIn: '7d'
-    })
-    if (!isValid) {
-      res.json({auth : false, message : 'password is incorrect!'})
+
+    if (existedEmail) {
+      const isValid = await bcrypt.compare(password, existedEmail.password);
+      const id = existedEmail._id;
+      //username password + 
+      //access token - JWT
+      //refresh token
+      const token = jwt.sign({id}, "Metalica", {
+          expiresIn: '7d'
+      })
+      if (!isValid) {
+        res.json({auth : false, message : 'password is incorrect!'})
+      }
+      else{
+        res.json({auth: true, token: token,user: {
+          id: existedEmail._id,
+          email: existedEmail.email,
+          name : existedEmail.name,
+          surname : existedEmail.surname,
+          category : existedEmail.category,
+          age : existedEmail.age
+      },message: 'signed in successfully!'});
+      }
+    }else if (existedEmaill) {
+      const isValid = await bcrypt.compare(password, existedEmaill.password);
+      const id = existedEmaill._id;
+      //username password + 
+      //access token - JWT
+      //refresh token
+      const token = jwt.sign({id}, "Metalica", {
+          expiresIn: '7d'
+      })
+      if (!isValid) {
+        res.json({auth : false, message : 'password is incorrect!'})
+      }
+      else{
+        res.json({auth: true, token: token,user: {
+          id: existedEmaill._id,
+          email: existedEmaill.email,
+          companyName : existedEmaill.companyName,
+          username : existedEmaill.username,
+      },message: 'signed in successfully!'});
+      }
+      
     }
-    else{
-      res.json({auth: true, token: token,user: {
-        id: existedEmail._id,
-        email: existedEmail.email,
-        name : existedEmail.name,
-        surname : existedEmail.surname,
-        category : existedEmail.category,
-        age : existedEmail.age
-    },message: 'signed in successfully!'});
-    }
+   
+    
   }
 
 })
 
 
-// LOGIIN FOR EMPLOYERR
+// // LOGIIN FOR EMPLOYERR
 
-app.post('/api/login/employer', async(req,res)=>{
-  const {email , password} = req.body;
-  const existedEmail = await employerModel.findOne({email : email});
-  if (!existedEmail) {
-    res.json({auth : false, message  : 'user not found!'})
-  }
-  else{
-    const isValid = await bcrypt.compare(password , existedEmail.password);
-    const id = existedEmail._id;
-    //username password + 
-    //access token - JWT
-    //refresh token
-    const token = jwt.sign({id}, "Metalica", {
-        expiresIn: '7d'
-    })
+// app.post('/api/login/employer', async(req,res)=>{
+//   const {email , password} = req.body;
+//   const existedEmail = await employerModel.findOne({email : email});
+//   if (!existedEmail) {
+//     res.json({auth : false, message  : 'user not found!'})
+//   }
+//   else{
+//     const isValid = await bcrypt.compare(password , existedEmail.password);
+//     const id = existedEmail._id;
+//     //username password + 
+//     //access token - JWT
+//     //refresh token
+//     const token = jwt.sign({id}, "Metalica", {
+//         expiresIn: '7d'
+//     })
 
-    if (!isValid) {
-      res.json({auth : false, message : 'password is incorrect!'})
-    }
-    else{
-      res.json({auth: true, token: token,user: {
-        id: existedEmail._id,
-        email: existedEmail.email,
-    },message: 'signed in successfully!'});
-    }
-  }
-})
+//     if (!isValid) {
+//       res.json({auth : false, message : 'password is incorrect!'})
+//     }
+//     else{
+//       res.json({auth: true, token: token,user: {
+//         id: existedEmail._id,
+//         email: existedEmail.email,
+//     },message: 'signed in successfully!'});
+//     }
+//   }
+// })
 
 
 

@@ -1,10 +1,12 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import NavbarStyle from './Navbar.module.css';
 import Container from '@mui/material/Container';
 import { Dropdown } from 'antd';
+import { useUserContext } from '../../../Context/UserContext';
+import { Button } from '@mui/material';
 
 
 
@@ -52,6 +54,8 @@ const items = [
 
 
 function Navbar() {
+  const [user, setUser] = useUserContext();
+  const navigate = useNavigate();
 
   
   return (
@@ -86,7 +90,32 @@ function Navbar() {
             <Grid item xs={4} md={4}>
               <div className={NavbarStyle.opsi}>
                 <div className={NavbarStyle.div_link}>
-                  <Link className={NavbarStyle.link} to='login'>LOGIN/REGISTER</Link>
+                {user ? (
+            <>
+              <Button color="inherit">
+                {user.username}
+              </Button>
+              <Button  className={NavbarStyle.link}   onClick={async()=>{
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                await setUser(null);
+                navigate('/login');
+              }} color="inherit"   >
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button color="inherit">
+                <Link to="/login" className={NavbarStyle.link}  >Login</Link>
+              </Button>
+              <Button color="inherit">
+                <Link to="/register"  className={NavbarStyle.link} >Register</Link>
+              </Button>
+            </>
+          )}
+        
+  
                 </div>
               </div>
             </Grid>

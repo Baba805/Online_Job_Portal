@@ -361,12 +361,11 @@
     font-weight: 500;
     transform: perspective(1px) translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    /* color: #fff; */
-    background: #eee8f8;
+    color: #fff;
+    background: #ff6158;
     border-radius: 3px;
     transition-duration: 0.5s;
 }
-
 
 .jobs_button_full{
     background: #3c2064;
@@ -655,13 +654,12 @@
     padding: 8px 30px;
     font-size: 17px;
     border-radius: 30px;
-    background: #eee8f8;
-    /* color: #fff; */
+    background: #372353;
+    color: #fff;
     font-weight: 500;
     transform: perspective(1px) translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     transition-duration: 0.5s;
-    
 }
 
 .count{

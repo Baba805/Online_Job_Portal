@@ -10,7 +10,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import { getServices, getvacancies, getBlogs, getPrices } from '../../../Api/request';
 
 
-function Home() {
+
+function EmployeeHome() {
 
   const [services, setServices] = useState([]);
   const [jobs, setJobs] = useState([]);
@@ -217,8 +218,8 @@ function Home() {
                           <p className={homeStyle.jobs_title_p_} style={{ marginTop: '10px' }} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
                         </div>
                         <div className={homeStyle.jobs_buttons} >
-                          <button className={homeStyle.jobs_button_apply}  type='button' disabled  >Apply Now</button>
-                          <button className={homeStyle.jobs_button_full}  >Full Time</button>
+                          <button className={homeStyle.jobs_button_apply} >Apply Now</button>
+                          <button className={homeStyle.jobs_button_full} >Full Time</button>
                         </div>
                       </div>
 
@@ -320,7 +321,7 @@ function Home() {
                             <li className={homeStyle.price_li} > {price.service_four} </li>
                             <li className={homeStyle.price_li} > {price.service_five} </li>
                           </ul>
-                          <button className={homeStyle.price_button}  type='button' disabled   > Sign Up </button>
+                          <button className={homeStyle.price_button}> Sign Up </button>
                         </div>
                       </Grid>
                     </>
@@ -392,4 +393,4 @@ function Home() {
   )
 }
 
-export default Home
+export default EmployeeHome

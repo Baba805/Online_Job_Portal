@@ -10,6 +10,8 @@ import Login from "../MAIN/Pages/Login/Login";
 import OurTeam from "../MAIN/Pages/OurTeam/OurTeam";
 import Pricing from "../MAIN/Pages/Pricing/Pricing";
 import Register from "../MAIN/Pages/Register/Register";
+import EmployeeHome from "../MAIN/Pages/EmployeeHome/EmployeeHome";
+import EmployerHome from "../MAIN/Pages/EmployerHome/EmployerHome";
 
 
 
@@ -61,6 +63,14 @@ export const ROUTES = [
             {
                 path : '/pricing',
                 element : <Pricing/>
+            },
+            {
+                path : '/employeehome',
+                element : <EmployeeHome/>
+            },
+            {
+                path : '/employerhome',
+                element : <EmployerHome/>
             },
         ]
     }
