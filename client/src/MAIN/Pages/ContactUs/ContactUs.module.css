@@ -1,0 +1,52 @@
+
+.first_div{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    height: 100%;
+    max-width: 900px;
+    padding: 30px 0;
+    top: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.first_div::before{
+    background-image: url('http://sbtechnosoft.com/guidepro/images/man.png');
+    background-repeat: no-repeat;
+    background-position: center right 0;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-size: auto 240px;
+    width: 441px;
+    right: 0;
+    top: 0;
+}
+
+.h2{
+    font-size: 43px;
+    font-weight: 700;
+    line-height: 60px;
+    color: #3c2064;
+    margin-top: 10px;
+}
+
+.blog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.contact{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.57143;
+    font-weight: 400;
+    color: #5d5d5d;
+}

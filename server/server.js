@@ -13,7 +13,8 @@ const servicesModel = require('./Models/services.model');
 const vacanciesModel = require('./Models/vacancies.model')
 const blogModel = require('./Models/blog.model')
 const PriceModel = require('./Models/price.model');
-const ourTeamModel = require('./Models/ourteam.model')
+const ourTeamModel = require('./Models/ourteam.model');
+const commentModel = require('./Models/comment.model');
 
 app.use(cors())
 // parse application/x-www-form-urlencoded
@@ -473,6 +474,55 @@ app.put('/api/ourteam/:id', async (req, res) => {
     posession : posession
   })
   res.status(201).send(existedOurTeam)
+});
+
+
+// GET COMMENT
+app.get('/api/comment', async(req,res)=>{
+  const comment = await commentModel.find();
+  res.status(200).json(comment)
+})
+
+// GET COMMENT BY ID
+
+app.get('/api/comment/:id', async(req,res)=>{
+  const ID = req.params.id;
+  const comment = await commentModel.findById(ID)
+  res.status(200).json(comment)
+})
+
+// DELETE COMMENT BY ID
+
+app.delete('/api/comment/:id', async (req, res) => {
+  const ID = req.params.id;
+  const deletedComment = await commentModel.findByIdAndDelete(ID)
+  res.status(203).send(deletedComment)
+})
+
+// POST COMMENT 
+app.post('/api/comment/', async (req, res) => {
+  const {name, imageUrl, posession, title} = req.body;
+  const newComment = new commentModel({
+    name : name,
+    imageUrl : imageUrl,
+    posession : posession,
+    title : title
+  });
+  await newComment.save();
+  res.status(200).send(newComment)
+});
+
+// EDIT COMMENT
+app.put('/api/comment/:id', async (req, res) => {
+  const {name, imageUrl, posession, title} = req.body;
+  const id = req.params.id;
+  const existedComment = commentModel.findByIdAndUpdate(id,{
+    name : name,
+    imageUrl : imageUrl,
+    posession : posession,
+    title : title
+  })
+  res.status(201).send(existedComment)
 });
 
 

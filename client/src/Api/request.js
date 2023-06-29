@@ -99,3 +99,14 @@ export const SignIn = async (payload)=>{
 
     return ourteam
  }
+
+  // GET ALL COMMENTS
+
+  export const getComment = async ()=>{
+    let comment;
+    await axios.get(`${BASE_URL}/comment`).then((res)=>{
+        comment = res.data
+    })
+
+    return comment
+ }

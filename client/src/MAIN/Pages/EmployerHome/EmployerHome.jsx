@@ -7,12 +7,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PersonIcon from '@mui/icons-material/Person';
-import { getServices, getvacancies, getBlogs, getPrices } from '../../../Api/request';
+import { getServices, getvacancies, getBlogs, getPrices, getComment } from '../../../Api/request';
+import { Slide } from 'react-slideshow-image';
+
+import 'react-slideshow-image/dist/styles.css';
 
 
 
 function EmployerHome() {
-
+  const [comment, setComment] = useState([])
   const [services, setServices] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [blogs, setBlogs] = useState([]);
@@ -21,6 +24,13 @@ function EmployerHome() {
 
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getComment().then((res) => {
+      console.log("salam");
+      setComment(res)
+    })
+  }, [])
 
   useEffect(()=>{
     if (!localStorage.getItem('user')) {
@@ -56,6 +66,18 @@ function EmployerHome() {
       setPrices(res)
     })
   }, [])
+
+// SLIDER
+  const proprietes = {
+    duration: 10500,
+    transitionDuration: 500,
+    infinite: true,
+    indicators: true,
+    arrows: true
+}
+const images = [
+    `${comment.imageUrl}`
+];
 
 
   const sortDataRecent = () => {
@@ -452,7 +474,41 @@ function EmployerHome() {
           <h3 className={homeStyle.third_h3} >Happy Candidates</h3>
           <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" style={{ opacity: '0.3' }} alt="" />
         </div>
+
+        
+
+      
+      <div className="containerSlide">
+                
+                    <Slide {...proprietes}>
+                    {comment && comment.map((comment)=>{
+                  return(
+                    <>
+                    <div style={{display : 'flex' , justifyContent : 'center' , alignItems : 'center', marginLeft : '300px', marginRight : '300px'}} >
+                      <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
+                    <div className="each-slide-1">
+                        <div className='slide-1-text'>
+                           
+                            <p  className={homeStyle.slider_p} > {comment.title} </p>
+                           
+                        </div>
+                        <div style={{display: 'flex', justifyContent : 'center', alignItems : 'center', flexDirection : 'column'}} className='slide-1-img'>
+                            <img className={homeStyle.slider_img} src={comment.imageUrl} alt="img0" />
+                            <h1 className={homeStyle.slider_h1} > {comment.name} </h1>
+                            <p className={homeStyle.slider_p} >  {comment.posession} </p>
+                        </div>
+                        
+                    </div >
+                    <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
+                    </div>
+                    </>
+                  )
+                })}
+                </Slide >
+                    
+            </div >
       </section>
+      
     </>
   )
 }
