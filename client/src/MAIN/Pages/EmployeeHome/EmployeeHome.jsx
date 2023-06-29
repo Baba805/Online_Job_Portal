@@ -1,7 +1,7 @@
 import { Box, Container, Grid } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import homeStyle from './Home.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PlaceIcon from '@mui/icons-material/Place';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
@@ -13,11 +13,21 @@ import { getServices, getvacancies, getBlogs, getPrices } from '../../../Api/req
 
 function EmployeeHome() {
 
+
   const [services, setServices] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [prices, setPrices] = useState([]);
+  const[users,setUsers] = useState([]);
 
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if (!localStorage.getItem('user')) {
+      navigate('/login');
+    }
+  },[])
 
 
 

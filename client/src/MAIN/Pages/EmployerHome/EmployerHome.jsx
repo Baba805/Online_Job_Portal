@@ -1,7 +1,7 @@
 import { Box, Container, Grid } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import homeStyle from './Home.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PlaceIcon from '@mui/icons-material/Place';
 import SearchIcon from '@mui/icons-material/Search';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
@@ -17,6 +17,16 @@ function EmployerHome() {
   const [jobs, setJobs] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [prices, setPrices] = useState([]);
+  const[users,setUsers] = useState([]);
+
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if (!localStorage.getItem('user')) {
+      navigate('/login');
+    }
+  },[])
 
 
 
@@ -46,6 +56,38 @@ function EmployerHome() {
       setPrices(res)
     })
   }, [])
+
+
+  const sortDataRecent = () => {
+    const sortedData = [...jobs].sort((a, b) => {
+      if (sort) {
+        return a.location.localeCompare(b.location)
+      }
+      else {
+        return b.location.localeCompare(a.location)
+      }
+    });
+    setJobs(sortedData);
+    setSort(!sort)
+  };
+  const [sort, setSort] = useState(true)
+
+  const sortDataFull =()=>{
+    const sortedData = [...jobs].sort((a,b)=>{
+      if (sort) {
+        if (a.time) {
+          return a.time.localeCompare(b.time)
+        }
+        
+      }
+      else b.time.localeCompare(a.time)
+    })
+    setJobs(sortedData);
+    setSort(!sort)
+  }
+
+
+
 
 
 
@@ -208,7 +250,7 @@ function EmployerHome() {
                 <button className={homeStyle.jobs_filter_btn} >All</button>
               </Grid>
               <Grid item xs={12} sm={2} >
-                <button className={homeStyle.jobs_filter_btn} >Recent</button>
+                <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >Recent</button>
               </Grid>
               <Grid item xs={12} sm={2} >
                 <button className={homeStyle.jobs_filter_btn} >Part Time</button>

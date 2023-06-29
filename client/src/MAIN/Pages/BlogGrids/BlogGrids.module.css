@@ -1,0 +1,151 @@
+
+.first_div{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    height: 100%;
+    max-width: 900px;
+    padding: 30px 0;
+    top: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.first_div::before{
+    background-image: url('http://sbtechnosoft.com/guidepro/images/man.png');
+    background-repeat: no-repeat;
+    background-position: center right 0;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-size: auto 240px;
+    width: 441px;
+    right: 0;
+    top: 0;
+}
+
+.h2{
+    font-size: 43px;
+    font-weight: 700;
+    line-height: 60px;
+    color: #3c2064;
+    margin-top: 10px;
+}
+
+.blog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.blog_img{
+    transform: scale(1.001);
+    transition: 0.5s all ease;
+}
+
+  .blog_card:hover .blog_img{
+    transform: scale(1.1);
+    transition: 0.5s all ease;
+}
+
+.blog_title{
+    background: #ededed;
+    font-size: 18px;
+    color: #5d5d5d;
+    font-weight: bold;
+    position: relative;
+    transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    /* position: relative; */
+    padding: 20px 15px;
+    line-height: 1.57143;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.blog_card:hover .blog_title{
+    background: #ffc6c3;
+}
+
+
+
+
+
+.blog_title_name{
+    display: flex;
+    background: #ededed;
+    font-size: 18px;
+    color: #5d5d5d;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid #ccc;
+}
+
+.blog_title_h6{
+    color: #433157;
+    font-size: 20px;
+    padding: 10px 13px;
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.blog_title > p{
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #3c2064;
+    padding: 0px 13px 10px 13px;
+}
+.blog_button{
+    padding: 5px 10px;
+    font-size: 14px;
+    margin: 0 13px 13px 0;
+    transition-duration: 0.5s;
+    color: #fff;
+    font-weight: 500;
+    background: #ff6158;
+    border: none;
+    border-radius: 3px;
+}
+
+.count{
+    margin-top: 80px;
+    background: #ff6158;
+    padding: 45px 0;
+}
+
+.count_h4{
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 53px;
+    line-height: 53px;
+    font-family: 'Poppins';
+    margin: auto 0 auto 5px;
+    text-align: center;
+}
+.count_span{
+    display: block;
+    font-size: 15px;
+    line-height: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 10px;
+    color: #ffffff;
+}
+.count_div1{
+    width: 0px;
+    height: 68%;
+    content: '';
+    border-right: 1px solid #fbb9b6;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}

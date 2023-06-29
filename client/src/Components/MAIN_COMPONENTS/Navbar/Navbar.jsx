@@ -93,7 +93,7 @@ function Navbar() {
                 {user ? (
             <>
               <Button color="inherit">
-                {user.username}
+               { user.companyName ?? user.name}
               </Button>
               <Button  className={NavbarStyle.link}   onClick={async()=>{
                 localStorage.removeItem('token');

@@ -296,12 +296,13 @@ app.delete('/api/vacancies/:id', async (req, res) => {
 
 // POST VACANCIES 
 app.post('/api/vacancies/', async (req, res) => {
-  const {name,sale,imageUrl,location} = req.body;
+  const {name,sale,imageUrl,location,time} = req.body;
   const newVacancie = new vacanciesModel({
       name : name,
       sale : sale,
       imageUrl : imageUrl,
-      location : location
+      location : location,
+      time : time
   });
   await newVacancie.save();
   res.status(200).send(newVacancie)
@@ -309,13 +310,15 @@ app.post('/api/vacancies/', async (req, res) => {
 
 // EDIT VACANCIES
 app.put('/api/vacancies/:id', async (req, res) => {
-  const {name,sale,imageUrl,location}= req.body;
+  const {name,sale,imageUrl,location,time}= req.body;
   const id = req.params.id;
   const existedVacancie = vacanciesModel.findByIdAndUpdate(id,{
       name : name,
       sale : sale,
       location : location,
-      imageUrl : imageUrl
+      imageUrl : imageUrl,
+      time : time
+
   })
   res.status(201).send(existedVacancie)
 });
