@@ -15,6 +15,7 @@ const blogModel = require('./Models/blog.model')
 const PriceModel = require('./Models/price.model');
 const ourTeamModel = require('./Models/ourteam.model');
 const commentModel = require('./Models/comment.model');
+const contactUstModel = require('./Models/contactUs.model');
 
 app.use(cors())
 // parse application/x-www-form-urlencoded
@@ -523,6 +524,25 @@ app.put('/api/comment/:id', async (req, res) => {
     title : title
   })
   res.status(201).send(existedComment)
+});
+
+// GET Contact Us
+app.get('/api/contactus', async(req,res)=>{
+  const contactus = await contactUstModel.find();
+  res.status(200).json(contactus)
+})
+
+// POST Contact Us 
+app.post('/api/contactus/', async (req, res) => {
+  const {name, email, phone, Introduction} = req.body;
+  const newContactUs = new contactUstModel({
+    name : name,
+    email : email,
+    phone : phone,
+    Introduction : Introduction
+  });
+  await newContactUs.save();
+  res.status(200).send(newContactUs)
 });
 
 

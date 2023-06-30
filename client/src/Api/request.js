@@ -110,3 +110,14 @@ export const SignIn = async (payload)=>{
 
     return comment
  }
+
+  // GET ALL CONTACTUS
+
+  export const getContactUs = async ()=>{
+    let contactus;
+    await axios.get(`${BASE_URL}/contactus`).then((res)=>{
+        contactus = res.data
+    })
+
+    return contactus
+ }
