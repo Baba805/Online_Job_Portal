@@ -277,8 +277,23 @@ app.put('/api/servives/:id', async (req, res) => {
 // GET ALL VACANCIES
 
 app.get('/api/vacancies', async(req,res)=>{
+  const { name } = req.query;
   const vacancies = await vacanciesModel.find();
-  res.status(200).json(vacancies)
+  
+  // res.status(200).json(vacancies)
+  if (name === undefined) {
+    res.status(200).send({
+      data: vacancies,
+      message: "data get success!",
+    });
+  } else {
+    res.status(200).send({
+      data: vacancies.filter((x) =>
+        x.name.toLowerCase().trim().includes(name.toLowerCase().trim())
+      ),
+      message: "data get success!",
+    });
+  }
 })
 
 // GET VACANCIE BY ID
@@ -298,13 +313,14 @@ app.delete('/api/vacancies/:id', async (req, res) => {
 
 // POST VACANCIES 
 app.post('/api/vacancies/', async (req, res) => {
-  const {name,sale,imageUrl,location,time} = req.body;
+  const {name,sale,imageUrl,location,time,companyName} = req.body;
   const newVacancie = new vacanciesModel({
       name : name,
       sale : sale,
       imageUrl : imageUrl,
       location : location,
-      time : time
+      time : time,
+      companyName : companyName
   });
   await newVacancie.save();
   res.status(200).send(newVacancie)
@@ -312,14 +328,15 @@ app.post('/api/vacancies/', async (req, res) => {
 
 // EDIT VACANCIES
 app.put('/api/vacancies/:id', async (req, res) => {
-  const {name,sale,imageUrl,location,time}= req.body;
+  const {name,sale,imageUrl,location,time,companyName}= req.body;
   const id = req.params.id;
   const existedVacancie = vacanciesModel.findByIdAndUpdate(id,{
       name : name,
       sale : sale,
       location : location,
       imageUrl : imageUrl,
-      time : time
+      time : time,
+      companyName : companyName
 
   })
   res.status(201).send(existedVacancie)

@@ -58,14 +58,38 @@ export const SignIn = async (payload)=>{
 
  // GET ALL VACANCIES
 
- export const getvacancies = async ()=>{
+ export const getvacancies = async (name)=>{
     let vacancies;
-    await axios.get(`${BASE_URL}/vacancies`).then((res)=>{
-        vacancies = res.data
+    let URL;
+    if (!name) {
+        URL = BASE_URL+'/vacancies';
+      }
+      else{
+        URL = BASE_URL+'/vacancies'+`?name=${name}`;
+      }
+    await axios.get(URL).then((res)=>{
+        vacancies = res.data.data
+        
     })
 
     return vacancies
  }
+ // GET VACANCIES BY ID
+ export const getvacanciesByID = async (ID) => {
+    let globalData;
+    await axios.get(`${BASE_URL}/vacancies/${ID}`).then((res) => {
+      globalData = res.data
+    });
+    return globalData;
+  };
+
+  // POST VACANCIES 
+
+  export const postVacancies = async (payload)=>{
+    axios.post(`${BASE_URL}/vacancies`, payload)
+  }
+
+
 
   // GET ALL BLOGS
 

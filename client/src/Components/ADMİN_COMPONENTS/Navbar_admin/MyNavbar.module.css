@@ -1,0 +1,37 @@
+/* .opsi{
+    border-left: 1px solid #cccccc;
+    padding: 0px 15px;
+}
+
+.div_link{
+    border-left: 1px solid #2b0a0a;
+    font-family: 'Poppins', sans-serif;
+     padding-left: 10px; 
+     padding: 11px 15px 12px; 
+    transition-duration: 0.5s;
+    font-size: 19px;
+    text-align: center;
+    font-weight: 500;
+    background: #ff6158;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+
+.link{
+    color: #fff;
+    text-decoration: none;
+    transition-duration: 0.5s;
+
+
+    
+}
+
+.link:hover{
+    color: white;
+}
+/* .div_link::after{
+    content: '';
+    
+} */ 

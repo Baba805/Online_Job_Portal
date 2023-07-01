@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from '@mui/material'
+import { Box, Button, Container, Grid, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import homeStyle from './Home.module.css'
 import { Link } from 'react-router-dom'
@@ -65,6 +65,26 @@ const images = [
   `${comment.imageUrl}`
 ];
 
+const sortDataRecent = () => {
+  const sortedData = [...jobs].sort((a, b) => {
+    if (sort) {
+      return a.location.localeCompare(b.location)
+    }
+    else {
+      return b.location.localeCompare(a.location)
+    }
+  });
+  setJobs(sortedData);
+  setSort(!sort)
+};
+const [sort, setSort] = useState(true)
+
+function handleSearch(e) {
+  
+  getvacancies(e.target.value).then((res) => {
+    setJobs(res);
+  });
+}
 
 
   return (
@@ -215,8 +235,53 @@ const images = [
           <h3 className={homeStyle.third_h3} >Current Jobs</h3>
           <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" alt="" />
         </div>
+        <Container maxWidth='xl'  >
+              <div  >
+              <TextField
+            onChange={(e) => handleSearch(e)}
+            style={{ marginBottom: "30px" }}
+            id="outlined-basic"
+            label="Search Artist"
+            variant="outlined"
+          />
+          <Button
+            variant="contained"
+            color="success"
+            style={{ marginLeft: '10px' }}
+            onClick={() => {
+              let sortedSale = [...jobs.sort((a, b) => a.sale - b.sale)];
+              setJobs(sortedSale);
+            }}
+          >Sort</Button>
+              </div>
+        
+          </Container>
         <Container maxWidth='xl'>
           <Box sx={{ flexGrow: 1 }}>
+
+          <Container maxWidth='xl'>
+          <Box sx={{ flexGrow: 1 }}>
+
+            <Grid container spacing={1} className={homeStyle.jobs_filter_div}  >
+            <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >All</button>
+              </Grid>
+              <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >Recent</button>
+              </Grid>
+              <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn} onClick={()=>{
+                  let sortedData = [...jobs.sort((a,b)=> a.time[0] - b.time[1])];
+                  setJobs(sortedData)
+                }} >Part Time</button>
+              </Grid>
+              <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn} >Full Time</button>
+              </Grid>
+              </Grid>
+              </Box>
+              </Container>
+              
 
             <Grid container spacing={2}>
               {jobs && jobs.map((vacancie) => {
@@ -226,16 +291,16 @@ const images = [
 
                       <div className={homeStyle.jobs_card} >
                         <div className={homeStyle.jobs_img} >
-                          <img src={vacancie.imageUrl} alt="" />
+                          <img src={vacancie.imageUrl} width='89px' height='89px' alt="" />
                         </div>
                         <div className={homeStyle.jobs_title} >
-                          <h4 className={homeStyle.jobs_title_h4} > {vacancie.name} </h4>
+                          <h4 className={homeStyle.jobs_title_h4} > <Link to={`/joblist/${vacancie._id}`}  >{vacancie.name}</Link> </h4>
                           <p className={homeStyle.jobs_title_p}  >   <img src="http://sbtechnosoft.com/guidepro/images/money-bag-icon.png" alt="" /> $  {vacancie.sale}  </p>
                           <p className={homeStyle.jobs_title_p_} style={{ marginTop: '10px' }} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
                         </div>
                         <div className={homeStyle.jobs_buttons} >
                           <button className={homeStyle.jobs_button_apply}  type='button' disabled  >Apply Now</button>
-                          <button className={homeStyle.jobs_button_full}  >Full Time</button>
+                          <button className={homeStyle.jobs_button_full}  >{ vacancie.time }</button>
                         </div>
                       </div>
 

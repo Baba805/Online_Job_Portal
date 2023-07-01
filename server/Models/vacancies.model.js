@@ -7,7 +7,8 @@ const vacanciesModel = mongoose.model('vacancies', new mongoose.Schema({
     imageUrl : String,
     sale : Number,
     location : String,
-    time : String
+    time : String,
+    companyName : String
 }))
 
 

@@ -12,7 +12,8 @@ import Pricing from "../MAIN/Pages/Pricing/Pricing";
 import Register from "../MAIN/Pages/Register/Register";
 import EmployeeHome from "../MAIN/Pages/EmployeeHome/EmployeeHome";
 import EmployerHome from "../MAIN/Pages/EmployerHome/EmployerHome";
-
+import MainRootAdmin from "../MAIN/Pages/MainRootAdmin";
+import AddJob from '../MAIN/Pages/AddJob/AddJob'
 
 
 export const ROUTES = [
@@ -72,6 +73,18 @@ export const ROUTES = [
                 path : '/employerhome',
                 element : <EmployerHome/>
             },
-        ]
+            {
+                path : '/addjob',
+                element : <AddJob/>
+            },
+
+        ],
+        
+        
+    },
+    {
+        path :'/admin',
+        element : <MainRootAdmin/>,
+       
     }
 ]
