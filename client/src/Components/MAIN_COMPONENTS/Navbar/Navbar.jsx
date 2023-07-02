@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import { Dropdown } from 'antd';
 import { useUserContext } from '../../../Context/UserContext';
 import { Button } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 
@@ -64,12 +65,12 @@ function Navbar() {
       <Box sx={{ flexGrow: 1 }} style={{ backgroundColor: '#ffffff', margin: '.8rem 1rem' }} >
         <Grid container spacing={2}>
           <Grid item xs={4} md={4}>
-            <Link to='/home'>  <img src='http://sbtechnosoft.com/guidepro/images/logo.png' alt='#'></img></Link>
+            <Link to='/'>  <img src='http://sbtechnosoft.com/guidepro/images/logo.png' alt='#'></img></Link>
           </Grid>
-          <Grid item xs={8} md={8} style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-            <Grid item xs={8} md={8} >
+          <Grid item xs={8} md={8}  style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+            <Grid item xs={8} md={8} className={NavbarStyle.menu} >
               <ul style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-                <li style={{ listStyle: 'none' }}   > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/home'>HOME</Link> </li>
+                <li style={{ listStyle: 'none' }}   > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/'>HOME</Link> </li>
                 <li style={{ listStyle: 'none' }}  > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/aboutus'>ABOUT US</Link> </li>
                 <li style={{ listStyle: 'none' }}  > <Dropdown
                   menu={{
@@ -87,7 +88,7 @@ function Navbar() {
                 
               </ul>
             </Grid>
-            <Grid item xs={4} md={4}>
+            <Grid item xs={6}  md={4}>
               <div className={NavbarStyle.opsi}>
                 <div className={NavbarStyle.div_link}>
                 {user ? (
@@ -119,11 +120,16 @@ function Navbar() {
                 </div>
               </div>
             </Grid>
+            <Grid item xs={6} md={4}  className={NavbarStyle.menu_icon_div} >
+        <MenuIcon className={NavbarStyle.menu_icon} />
+        </Grid>
           </Grid>
 
 
         </Grid>
       </Box>
+      
+
     </Container>
     </nav>
   )

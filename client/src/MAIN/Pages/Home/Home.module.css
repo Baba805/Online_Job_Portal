@@ -1,21 +1,20 @@
-
-.main{
+.main {
     background: #d1d1d1;
     background-image: url('http://sbtechnosoft.com/guidepro/images/banner.jpg');
 }
 
-.banner_section{
+.banner_section {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.57143;
     font-weight: 400;
     color: #5d5d5d;
     padding: 130px 0 0 0;
-   
+
     text-align: center;
 }
 
-.h2{
+.h2 {
     font-size: 45px;
     font-weight: 700;
     line-height: 60px;
@@ -25,7 +24,8 @@
     font-family: 'Poppins', sans-serif;
     margin-bottom: 10px;
 }
-.p{
+
+.p {
     margin-bottom: 1rem;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -35,7 +35,8 @@
     margin-bottom: 10px;
 
 }
-.link{
+
+.link {
     background: #ff6158;
     padding: 15px 45px;
     font-size: 16px;
@@ -50,11 +51,11 @@
 
 }
 
-.link:hover{
+.link:hover {
     color: white;
 }
 
-.filter_section{
+.filter_section {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -67,21 +68,21 @@
     margin-bottom: 50px;
 }
 
-.filter_section::before{
-        bottom: 100%;
-        content: '';
-        height: 58px;
-        width: 0;
-        display: inline-block;
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: auto;
-        border-right: 1px dotted #ffffff;
-        margin-bottom: 10px;
+.filter_section::before {
+    bottom: 100%;
+    content: '';
+    height: 58px;
+    width: 0;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-right: 1px dotted #ffffff;
+    margin-bottom: 10px;
 }
 
-.filter_section::after{
+.filter_section::after {
     bottom: 100%;
     content: '';
     display: inline-block;
@@ -96,7 +97,8 @@
     border-right: 7px solid transparent;
     border-top: 7px solid #ffffff;
 }
-.input_group{
+
+.input_group {
     height: calc(3em + .75rem + 2px);
     box-shadow: none;
     padding-left: 0;
@@ -104,7 +106,7 @@
 }
 
 
-.btn{
+.btn {
     background: #ff6158;
     padding: 20px 40px;
     white-space: nowrap;
@@ -118,7 +120,7 @@
     border: none;
 }
 
-.info{
+.info {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.57143;
@@ -129,49 +131,53 @@
     background: linear-gradient(90deg, rgba(255, 97, 88, 1) 0%, rgba(255, 97, 88, 1) 50%, rgba(55, 35, 84, 1) 50%, rgba(55, 35, 84, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6158", endColorstr="#3c2064", GradientType=1);
     color: #ffffff;
-  
+
 }
-.info_all_div{
+
+.info_all_div {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.info_left{
-    
+.info_left {
+
     height: 230px;
     display: flex;
     align-items: center;
 }
-.left_img{
+
+.left_img {
     top: 36px;
     left: -28px;
     width: 250px;
 }
 
-.title{
+.title {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     margin-right: 20px;
 }
-.left_h2{
+
+.left_h2 {
     color: #fff;
     font-size: 24px;
     font-weight: 700;
 }
-.left_p{
+
+.left_p {
     margin-bottom: 0;
     font-size: 15px;
     width: 400px;
 }
 
-.info_right{
+.info_right {
     background: url('http://sbtechnosoft.com/guidepro/images/strip-square.png') no-repeat center left / auto 100% transparent;
-    
+
 }
 
-.right_right{
+.right_right {
     margin-left: 10px;
     display: flex;
     justify-content: space-around;
@@ -179,7 +185,7 @@
     width: 700px;
 }
 
-.right_h5{
+.right_h5 {
     font-size: 15px;
     font-weight: 600;
     border-top: 1px solid #67597b;
@@ -191,7 +197,7 @@
 }
 
 
-.third_h3{
+.third_h3 {
     color: #3c2064;
     font-size: 45px;
     text-align: center;
@@ -202,7 +208,7 @@
     width: 100%;
 }
 
-.first_card{
+.first_card {
     margin-top: 60px;
     padding: 25px;
     text-align: center;
@@ -227,7 +233,7 @@
     color: #3c2064;
 } */
 
-.first_card_iconn{
+.first_card_iconn {
     font-size: 34px;
     height: 90px;
     width: 90px;
@@ -243,17 +249,17 @@
     color: #3c2064;
 }
 
-.first_card_iconn:hover{
+.first_card_iconn:hover {
     background: #573883;
     color: #fff;
 }
 
-.first_card:hover{
+.first_card:hover {
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
 }
 
 
-.first_card_h4{
+.first_card_h4 {
     font-weight: 600;
     margin-bottom: 15px;
     text-transform: capitalize;
@@ -261,7 +267,7 @@
     color: #ff6158;
 }
 
-.first_card_item{
+.first_card_item {
     margin-top: 0;
     margin-bottom: 1rem;
     font-family: 'Poppins', sans-serif;
@@ -273,7 +279,7 @@
 
 
 
-.services_card{
+.services_card {
     padding: 20px 20px 15px 20px;
     text-align: center;
     box-shadow: 0px 10px 80px rgba(0, 0, 0, 0.05);
@@ -281,40 +287,40 @@
     margin-top: 40px;
 }
 
-.services_card:hover{
+.services_card:hover {
     background: #ffffff;
     box-shadow: 0px 10px 80px rgba(0, 0, 0, 0.1);
 }
 
-.services_h5{
+.services_h5 {
     font-size: 16px;
     color: #1d2833;
     font-weight: bold;
     margin-top: 16px;
 }
 
-.services_p{
+.services_p {
     font-size: 14px;
     color: #5d5d5d;
 }
 
-.jobs_card{
+.jobs_card {
     background: #ffffff;
     padding: 20px;
     border-radius: 3px;
     border: 1px solid #aaaa;
     padding: 50px;
-    
+
 }
 
-.jobs_img{
+.jobs_img {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 
-.jobs_title{
+.jobs_title {
     /* display: flex;
     flex-direction: column;
     justify-content: center;
@@ -324,7 +330,7 @@
     height: 25vh
 }
 
-.jobs_title_h4{
+.jobs_title_h4 {
     font-family: 'Poppins', sans-serif;
     font-size: 22px;
     line-height: 1.57143;
@@ -337,7 +343,7 @@
     line-height: 1.2;
 }
 
-.jobs_title_p{
+.jobs_title_p {
     color: #3c2064;
     font-size: 14px;
     padding: 0 6px 0 0;
@@ -347,12 +353,12 @@
 }
 
 
-.jobs_buttons{
+.jobs_buttons {
     display: flex;
     flex-direction: column;
 }
 
-.jobs_button_apply{
+.jobs_button_apply {
     font-size: 15px;
     white-space: nowrap;
     padding: 8px 10px;
@@ -368,7 +374,7 @@
 }
 
 
-.jobs_button_full{
+.jobs_button_full {
     background: #3c2064;
     font-size: 15px;
     white-space: nowrap;
@@ -382,7 +388,8 @@
     border-radius: 3px;
     transition-duration: 0.5s;
 }
-.blog{
+
+.blog {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -390,17 +397,17 @@
     overflow: hidden;
 }
 
-.blog_img{
+.blog_img {
     transform: scale(1.001);
     transition: 0.5s all ease;
 }
 
-  .blog_card:hover .blog_img{
+.blog_card:hover .blog_img {
     transform: scale(1.1);
     transition: 0.5s all ease;
 }
 
-.blog_title{
+.blog_title {
     background: #ededed;
     font-size: 18px;
     color: #5d5d5d;
@@ -416,7 +423,7 @@
 
 
 
-.blog_card:hover .blog_title{
+.blog_card:hover .blog_title {
     background: #ffc6c3;
 }
 
@@ -424,7 +431,7 @@
 
 
 
-.blog_title_name{
+.blog_title_name {
     display: flex;
     background: #ededed;
     font-size: 18px;
@@ -434,7 +441,7 @@
     border-bottom: 1px solid #ccc;
 }
 
-.blog_title_h6{
+.blog_title_h6 {
     color: #433157;
     font-size: 20px;
     padding: 10px 13px;
@@ -442,14 +449,15 @@
     font-weight: 600;
 }
 
-.blog_title > p{
+.blog_title>p {
     margin-bottom: 0;
     font-size: 13px;
     font-weight: 500;
     color: #3c2064;
     padding: 0px 13px 10px 13px;
 }
-.blog_button{
+
+.blog_button {
     padding: 5px 10px;
     font-size: 14px;
     margin: 0 13px 13px 0;
@@ -462,7 +470,7 @@
 }
 
 
-    
+
 
 .subscription {
     margin-top: 80px;
@@ -477,7 +485,7 @@
     background-repeat: no-repeat;
 }
 
-.subscription::before{
+.subscription::before {
     position: absolute;
     left: 0px;
     right: 0px;
@@ -488,7 +496,7 @@
     background: rgba(55, 35, 84, 0.8);
 }
 
-.subscription > h3{
+.subscription>h3 {
     font-size: 45px;
     font-weight: bold;
     color: rgb(255, 255, 255);
@@ -499,14 +507,15 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.subscription > p{
+.subscription>p {
     font-size: 17px;
     margin: 10px 0 0 0;
     line-height: 28px;
     display: inline-block;
     position: relative;
 }
-.subscription_input{
+
+.subscription_input {
     border-radius: 30px 0 0 30px;
     padding-left: 30px;
     min-height: 60px;
@@ -514,7 +523,8 @@
     border: 1px solid #ced4da;
     width: 300px;
 }
-  .subscription_button{
+
+.subscription_button {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -535,7 +545,7 @@
     cursor: pointer;
 }
 
-.price{
+.price {
     background: #f2f2f2;
     text-align: center;
     transform: perspective(1px) translateZ(0);
@@ -548,7 +558,7 @@
     margin-top: 40px;
 }
 
-.price::before{
+.price::before {
     content: "";
     position: absolute;
     z-index: -1;
@@ -570,7 +580,7 @@
     border-radius: 5px;
 }
 
-.price:hover{
+.price:hover {
     background: #f2f2f2;
     text-align: center;
     transform: perspective(1px) translateZ(0);
@@ -583,7 +593,7 @@
     margin-top: 40px;
 }
 
-.price_title{
+.price_title {
     color: #ffffff;
     font-weight: 700;
     text-transform: uppercase;
@@ -591,12 +601,14 @@
     padding: 10px;
     border-bottom: 1px solid #4f4164;
 }
-.price_head{
+
+.price_head {
     background: #372353;
     padding: 20px 20px 20px 20px;
     position: relative;
 }
-.price_head > h4{
+
+.price_head>h4 {
     color: #ffffff;
     font-weight: bold;
     font-size: 80px;
@@ -605,12 +617,13 @@
     margin: 0;
 }
 
-.price_head > p{
+.price_head>p {
     color: #ffffff;
     text-transform: uppercase;
     margin-bottom: 5px;
 }
-.price_head::after{
+
+.price_head::after {
     content: '';
     background: url('http://sbtechnosoft.com/guidepro/images/price-box-tail.png') no-repeat top center / 100% auto;
     position: absolute;
@@ -620,7 +633,7 @@
     height: 32px;
 }
 
-.price_ul{
+.price_ul {
     margin: 0;
     padding: 30px 10px;
     margin-top: .5rem;
@@ -629,12 +642,12 @@
 }
 
 
-.price_ul > li {
+.price_ul>li {
     position: relative;
     padding: 10px 0;
 }
 
-.price_li::before{
+.price_li::before {
     opacity: 0.35;
     position: absolute;
     left: 0;
@@ -651,7 +664,7 @@
 }
 
 
-.price_button{
+.price_button {
     padding: 8px 30px;
     font-size: 17px;
     border-radius: 30px;
@@ -661,16 +674,16 @@
     transform: perspective(1px) translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     transition-duration: 0.5s;
-    
+
 }
 
-.count{
+.count {
     margin-top: 80px;
     background: #ff6158;
     padding: 45px 0;
 }
 
-.count_h4{
+.count_h4 {
     font-weight: 600;
     color: #ffffff;
     font-size: 53px;
@@ -679,7 +692,8 @@
     margin: auto 0 auto 5px;
     text-align: center;
 }
-.count_span{
+
+.count_span {
     display: block;
     font-size: 15px;
     line-height: 15px;
@@ -688,7 +702,8 @@
     margin-top: 10px;
     color: #ffffff;
 }
-.count_div1{
+
+.count_div1 {
     width: 0px;
     height: 68%;
     content: '';
@@ -699,14 +714,20 @@
     bottom: 0;
     margin: auto;
 }
-.slider_img{
+
+.slider_img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     border: 1px solid #ff6158;
-    
+
 }
-.slider_h1{
+
+.react-slideshow-wrapper .images-wrap {
+    transform: translate(0px) !important;
+}
+
+.slider_h1 {
     font-size: 19px;
     font-weight: 500;
     color: #ff6158;
@@ -714,14 +735,15 @@
     margin-bottom: 2px;
 }
 
-.slider_p{
+.slider_p {
     font-size: 17px;
     font-weight: 500;
     font-style: normal;
     font-family: 'Poppins', sans-serif;
     text-transform: uppercase;
 }
-.jobs_filter_div{
+
+.jobs_filter_div {
     background-color: #ffffff;
     padding: 15px;
     border-radius: 5px;
@@ -731,7 +753,8 @@
     justify-content: center;
     align-items: center;
 }
-.jobs_filter_btn{
+
+.jobs_filter_btn {
     font-size: 18px;
     border: 1px solid #3c2064;
     border-radius: 3px;
@@ -741,12 +764,12 @@
     color: #3c2064;
     margin: 0px 5px;
     min-width: 100px;
-    
+
 }
-.jobs_filter_btn:hover{
+
+.jobs_filter_btn:hover {
     background: #3c2064;
     color: #ffffff;
     border-color: #3c2064 !important;
     outline: none;
 }
-

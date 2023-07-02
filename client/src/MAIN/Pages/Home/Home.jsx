@@ -1,6 +1,5 @@
 import { Box, Button, Container, Grid, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import homeStyle from './Home.module.css'
 import { Link } from 'react-router-dom'
 import PlaceIcon from '@mui/icons-material/Place';
 import SearchIcon from '@mui/icons-material/Search';
@@ -8,12 +7,15 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import PersonIcon from '@mui/icons-material/Person';
 import { getServices, getvacancies, getBlogs, getPrices, getComment } from '../../../Api/request';
-import { Slide } from 'react-slideshow-image';
 
+import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
+import homeStyle from './Home.module.css'
+import './home.css'
 function Home() {
   const [comment, setComment] = useState([])
+
   const [services, setServices] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [blogs, setBlogs] = useState([]);
@@ -53,38 +55,51 @@ function Home() {
     })
   }, [])
 
-// SLIDER
-const proprietes = {
-  duration: 10500,
-  transitionDuration: 500,
-  infinite: true,
-  indicators: true,
-  arrows: true
-}
-const images = [
-  `${comment.imageUrl}`
-];
+  // SLIDER
+  const proprietes = {
+    duration: 10500,
+    transitionDuration: 500,
+    infinite: true,
+    indicators: true,
+    arrows: true
+  }
+  const images = [
+    `${comment.imageUrl}`
+  ];
 
-const sortDataRecent = () => {
-  const sortedData = [...jobs].sort((a, b) => {
-    if (sort) {
-      return a.location.localeCompare(b.location)
-    }
-    else {
-      return b.location.localeCompare(a.location)
-    }
-  });
-  setJobs(sortedData);
-  setSort(!sort)
-};
-const [sort, setSort] = useState(true)
+  const sortDataRecent = () => {
+    const sortedData = [...jobs].sort((a, b) => {
+      if (sort) {
+        return a.location.localeCompare(b.location)
+      }
+      else {
+        return b.location.localeCompare(a.location)
+      }
+    });
+    setJobs(sortedData);
+    setSort(!sort)
+  };
 
-function handleSearch(e) {
-  
-  getvacancies(e.target.value).then((res) => {
-    setJobs(res);
-  });
-}
+  const sortDaFull = () => {
+    const sortedData = [...jobs].sort((a, b) => {
+      if (sort) {
+        return a.time.localeCompare(b.time)
+      }
+      else {
+        return b.time.localeCompare(a.time)
+      }
+    });
+    setJobs(sortedData);
+    setSort(!sort)
+  };
+  const [sort, setSort] = useState(true)
+
+  function handleSearch(e) {
+
+    getvacancies(e.target.value).then((res) => {
+      setJobs(res);
+    });
+  }
 
 
   return (
@@ -236,52 +251,49 @@ function handleSearch(e) {
           <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" alt="" />
         </div>
         <Container maxWidth='xl'  >
-              <div  >
-              <TextField
-            onChange={(e) => handleSearch(e)}
-            style={{ marginBottom: "30px" }}
-            id="outlined-basic"
-            label="Search Artist"
-            variant="outlined"
-          />
-          <Button
-            variant="contained"
-            color="success"
-            style={{ marginLeft: '10px' }}
-            onClick={() => {
-              let sortedSale = [...jobs.sort((a, b) => a.sale - b.sale)];
-              setJobs(sortedSale);
-            }}
-          >Sort</Button>
-              </div>
-        
-          </Container>
+          <div  >
+            <TextField
+              onChange={(e) => handleSearch(e)}
+              style={{ marginBottom: "30px" }}
+              id="outlined-basic"
+              label="Search Artist"
+              variant="outlined"
+            />
+            <Button
+              variant="contained"
+              color="success"
+              style={{ marginLeft: '10px' }}
+              onClick={() => {
+                let sortedSale = [...jobs.sort((a, b) => a.sale - b.sale)];
+                setJobs(sortedSale);
+              }}
+            >Sort</Button>
+          </div>
+
+        </Container>
         <Container maxWidth='xl'>
           <Box sx={{ flexGrow: 1 }}>
 
-          <Container maxWidth='xl'>
-          <Box sx={{ flexGrow: 1 }}>
+            <Container maxWidth='xl'>
+              <Box sx={{ flexGrow: 1 }}>
 
-            <Grid container spacing={1} className={homeStyle.jobs_filter_div}  >
-            <Grid item xs={12} sm={2} >
-                <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >All</button>
-              </Grid>
-              <Grid item xs={12} sm={2} >
-                <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >Recent</button>
-              </Grid>
-              <Grid item xs={12} sm={2} >
-                <button className={homeStyle.jobs_filter_btn} onClick={()=>{
-                  let sortedData = [...jobs.sort((a,b)=> a.time[0] - b.time[1])];
-                  setJobs(sortedData)
-                }} >Part Time</button>
-              </Grid>
-              <Grid item xs={12} sm={2} >
-                <button className={homeStyle.jobs_filter_btn} >Full Time</button>
-              </Grid>
-              </Grid>
+                <Grid container spacing={1} className={homeStyle.jobs_filter_div}  >
+                  <Grid item xs={12} sm={2} >
+                    <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >All</button>
+                  </Grid>
+                  <Grid item xs={12} sm={2} >
+                    <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >Recent</button>
+                  </Grid>
+                  <Grid item xs={12} sm={2} >
+                    <button className={homeStyle.jobs_filter_btn} onClick={sortDaFull} >Part Time</button>
+                  </Grid>
+                  <Grid item xs={12} sm={2} >
+                    <button className={homeStyle.jobs_filter_btn} onClick={sortDaFull} >Full Time</button>
+                  </Grid>
+                </Grid>
               </Box>
-              </Container>
-              
+            </Container>
+
 
             <Grid container spacing={2}>
               {jobs && jobs.map((vacancie) => {
@@ -299,8 +311,8 @@ function handleSearch(e) {
                           <p className={homeStyle.jobs_title_p_} style={{ marginTop: '10px' }} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
                         </div>
                         <div className={homeStyle.jobs_buttons} >
-                          <button className={homeStyle.jobs_button_apply}  type='button' disabled  >Apply Now</button>
-                          <button className={homeStyle.jobs_button_full}  >{ vacancie.time }</button>
+                          <button className={homeStyle.jobs_button_apply} type='button' disabled  >Apply Now</button>
+                          <button className={homeStyle.jobs_button_full}  >{vacancie.time}</button>
                         </div>
                       </div>
 
@@ -402,7 +414,7 @@ function handleSearch(e) {
                             <li className={homeStyle.price_li} > {price.service_four} </li>
                             <li className={homeStyle.price_li} > {price.service_five} </li>
                           </ul>
-                          <button className={homeStyle.price_button}  type='button' disabled   > Sign Up </button>
+                          <button className={homeStyle.price_button} type='button' disabled   > Sign Up </button>
                         </div>
                       </Grid>
                     </>
@@ -423,86 +435,98 @@ function handleSearch(e) {
         <Container maxWidth='xl'>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-            <Grid item xs={12} sm={6} md={3} >
-               
-                <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
-                  <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon1.png" alt="" />
+              <Grid item xs={12} sm={6} md={3} >
+
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                  <img style={{ marginBottom: '10px' }} src="http://sbtechnosoft.com/guidepro/images/count/count-icon1.png" alt="" />
                   <h4 className={homeStyle.count_h4} >150+</h4>
                   <span className={homeStyle.count_span} >FACULTIES</span>
                 </div>
-                
-            </Grid>
-            <Grid item xs={12} sm={6} md={3} >
-               
-               <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
-                 <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon2.png" alt="" />
-                 <h4 className={homeStyle.count_h4} >2300+</h4>
-                 <span className={homeStyle.count_span} >STUDENTS</span>
-               </div>
-               
-           </Grid>
-           <Grid item xs={12} sm={6} md={3} >
-               
-               <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
-                 <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon3.png" alt="" />
-                 <h4 className={homeStyle.count_h4} >40+</h4>
-                 <span className={homeStyle.count_span} >COURSES</span>
-               </div>
-               
-           </Grid>
-           <Grid item xs={12} sm={6} md={3} >
-               
-               <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
-                 <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon4.png" alt="" />
-                 <h4 className={homeStyle.count_h4} >80+</h4>
-                 <span className={homeStyle.count_span} >COUNTRIES</span>
-               </div>
-               
-           </Grid>
+
+              </Grid>
+              <Grid item xs={12} sm={6} md={3} >
+
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                  <img style={{ marginBottom: '10px' }} src="http://sbtechnosoft.com/guidepro/images/count/count-icon2.png" alt="" />
+                  <h4 className={homeStyle.count_h4} >2300+</h4>
+                  <span className={homeStyle.count_span} >STUDENTS</span>
+                </div>
+
+              </Grid>
+              <Grid item xs={12} sm={6} md={3} >
+
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                  <img style={{ marginBottom: '10px' }} src="http://sbtechnosoft.com/guidepro/images/count/count-icon3.png" alt="" />
+                  <h4 className={homeStyle.count_h4} >40+</h4>
+                  <span className={homeStyle.count_span} >COURSES</span>
+                </div>
+
+              </Grid>
+              <Grid item xs={12} sm={6} md={3} >
+
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                  <img style={{ marginBottom: '10px' }} src="http://sbtechnosoft.com/guidepro/images/count/count-icon4.png" alt="" />
+                  <h4 className={homeStyle.count_h4} >80+</h4>
+                  <span className={homeStyle.count_span} >COUNTRIES</span>
+                </div>
+
+              </Grid>
             </Grid>
           </Box>
         </Container>
       </section>
       <section className={homeStyle.comments} >
 
-<div style={{ textAlign: 'center', marginTop: '90px', marginBottom: '90px' }} >
-    <h3 className={homeStyle.third_h3} >Happy Candidates</h3>
-    <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" style={{ opacity: '0.3' }} alt="" />
-  </div>
-
-  
+        <div style={{ textAlign: 'center', marginTop: '90px', marginBottom: '90px' }} >
+          <h3 className={homeStyle.third_h3} >Happy Candidates</h3>
+          <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" style={{ opacity: '0.3' }} alt="" />
+        </div>
 
 
-<div className="containerSlide">
-          
-              <Slide {...proprietes}>
-              {comment && comment.map((comment)=>{
-            return(
-              <>
-              <div style={{display : 'flex' , justifyContent : 'center' , alignItems : 'center', marginLeft : '300px', marginRight : '300px'}} >
-                <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
-              <div className="each-slide-1">
-                  <div className='slide-1-text'>
-                     
-                      <p  className={homeStyle.slider_p} > {comment.title} </p>
-                     
+
+
+        <div className="containerSlide">
+
+          <Slide {...proprietes}>
+            {comment && comment.map((comments) => {
+              return (
+                <>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      marginLeft: '300px',
+                      marginRight: '300px'
+                    }} >
+                    <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
+                    <div className="each-slide-1">
+                      <div className='slide-1-text'>
+
+                        <p className={homeStyle.slider_p} > {comments.title} </p>
+
+                      </div>
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          flexDirection: 'column'
+                        }} className='slide-1-img'>
+                        <img className={homeStyle.slider_img} src={comments.imageUrl} alt="img0" />
+                        <h1 className={homeStyle.slider_h1} > {comments.name} </h1>
+                        <p className={homeStyle.slider_p} >  {comments.posession} </p>
+                      </div>
+                    </div >
+                    <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
                   </div>
-                  <div style={{display: 'flex', justifyContent : 'center', alignItems : 'center', flexDirection : 'column'}} className='slide-1-img'>
-                      <img className={homeStyle.slider_img} src={comment.imageUrl} alt="img0" />
-                      <h1 className={homeStyle.slider_h1} > {comment.name} </h1>
-                      <p className={homeStyle.slider_p} >  {comment.posession} </p>
-                  </div>
-                  
-              </div >
-              <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
-              </div>
-              </>
-            )
-          })}
+                </>
+              )
+            })}
           </Slide >
-              
-      </div >
-</section>
+
+        </div >
+      </section>
     </>
   )
 }

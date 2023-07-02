@@ -16,6 +16,7 @@ const PriceModel = require('./Models/price.model');
 const ourTeamModel = require('./Models/ourteam.model');
 const commentModel = require('./Models/comment.model');
 const contactUstModel = require('./Models/contactUs.model');
+const adminModel = require('./Models/admin.model');
 
 app.use(cors())
 // parse application/x-www-form-urlencoded
@@ -176,6 +177,68 @@ app.post('/api/login', async (req, res) => {
 
 })
 
+// ADMIN LOGIN
+
+app.post('/api/admin/login', async (req, res) => {
+  const { username, password } = req.body;
+  const existedUsername = await adminModel.findOne({ username: username });
+  if (!existedUsername) {
+    res.json({auth: false,message: 'username not found!'});
+    return;
+}
+else{
+    const isValid = await bcrypt.compare(password, existedUsername.password);
+    const id = existedUsername._id;
+    //username password + 
+    //access token - JWT
+    //refresh token
+    const token = jwt.sign({id}, "Metallica" , {
+        expiresIn: '7d'
+    })
+    if (!isValid) {
+        res.json({auth: false, message: 'password is incorrect!'});
+    }
+    else{
+        res.json({auth: true, token: token,admin: {
+            id: existedUsername._id,
+            username: existedUsername.username,
+        },message: 'signed in successfully!'});
+    }
+}
+
+})
+
+//register for admin
+app.post('/api/admin/register',async(req,res)=>{
+  const{username,password} = req.body;
+
+  const existedUsername = await adminModel.findOne({username: username});
+  if (existedUsername) {
+      res.json({message: 'username already exists!'});
+      return;
+  }
+
+  const salt = await bcrypt.genSalt(10); //500ms
+  const hashedPassword = await bcrypt.hash(password, salt);
+  const Admin = new adminModel({
+      username: username,
+      password: hashedPassword,
+  })
+  await Admin.save();
+  res.json({message: 'user signed up successfully!'});
+
+})
+
+
+
+//Admin - get
+app.get('/api/admin/logout',verifyJWT,async(req,res)=>{
+  const admin = await adminModel.find();
+  res.json({admin: admin});
+})
+
+
+
 
 // // LOGIIN FOR EMPLOYERR
 
@@ -330,7 +393,7 @@ app.post('/api/vacancies/', async (req, res) => {
 app.put('/api/vacancies/:id', async (req, res) => {
   const {name,sale,imageUrl,location,time,companyName}= req.body;
   const id = req.params.id;
-  const existedVacancie = vacanciesModel.findByIdAndUpdate(id,{
+  const existedVacancie = await vacanciesModel.findByIdAndUpdate(id,{
       name : name,
       sale : sale,
       location : location,

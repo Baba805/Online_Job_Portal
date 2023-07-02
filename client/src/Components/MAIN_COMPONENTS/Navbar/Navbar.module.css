@@ -22,9 +22,7 @@
 
 .div_link{
     border-left: 1px solid #2b0a0a;
-    font-family: 'Poppins', sans-serif;
-     padding-left: 10px; 
-     padding: 11px 15px 12px; 
+     padding: 11px 0px; 
     transition-duration: 0.5s;
     font-size: 19px;
     text-align: center;
@@ -53,13 +51,19 @@
     
 } */
 
-.div_link:hover{
-    /* -webkit-transform: scaleY(0); 
-     transform: scaleY(0); 
-     
-     transform-origin: 50%;
-         outline: none; 
-     text-decoration: none; */
-     
+.menu_icon_div{
+    display: none;
+}
+.menu_icon{
+    font-size: 62px;
 
+}
+@media (max-width:1100px) {
+    .menu_icon_div{
+        
+        display: block;
+    }
+    .menu{
+        display: none;
+    }
 }

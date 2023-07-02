@@ -1,13 +1,19 @@
-import React from 'react'
-import {Outlet} from 'react-router-dom'
-import Navbar from '../../Components/ADMİN_COMPONENTS/Navbar_admin/MyNavbar'
-import Footer from '../../Components/ADMİN_COMPONENTS/Footer_admin/Footer'
+import React, { useEffect } from 'react'
+import {Outlet, useNavigate} from 'react-router-dom'
+import Navbar from '../../ADMIN/Admin_Navbar/Navbar'
+
 function MainRootAdmin() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem('admin')) {
+      navigate('/admin/login');
+    }
+  }, [])
   return (
     <>
     <Navbar/>
     <Outlet/>
-    <Footer/>
     
     </>
   )

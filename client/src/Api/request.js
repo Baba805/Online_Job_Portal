@@ -19,6 +19,13 @@ export const SignIn = async (payload)=>{
    return response.data
 }
 
+// LOGIN ADMIN
+
+export const AdminLogin = async (payload)=>{
+  const response = await axios.post(`${BASE_URL}/admin/login`, payload);
+  return response.data
+}
+
 
 
 
@@ -58,7 +65,7 @@ export const SignIn = async (payload)=>{
 
  // GET ALL VACANCIES
 
- export const getvacancies = async (name)=>{
+ export const getvacancies = async (name,time)=>{
     let vacancies;
     let URL;
     if (!name) {
@@ -66,6 +73,12 @@ export const SignIn = async (payload)=>{
       }
       else{
         URL = BASE_URL+'/vacancies'+`?name=${name}`;
+      }
+      if (!time) {
+        URL = BASE_URL + '/vacancies'
+      }
+      else{
+        URL = BASE_URL+'/vacancies'+`?time=${time}`;
       }
     await axios.get(URL).then((res)=>{
         vacancies = res.data.data

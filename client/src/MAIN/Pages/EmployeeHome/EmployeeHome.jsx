@@ -92,6 +92,19 @@ function EmployeeHome() {
     setSort(!sort)
   };
   const [sort, setSort] = useState(true)
+  const sortDaFull = () => {
+    const sortedData = [...jobs].sort((a, b) => {
+      if (sort) {
+        return a.time.localeCompare(b.time)
+      }
+      else {
+        return b.time.localeCompare(a.time)
+      }
+    });
+    setJobs(sortedData);
+    setSort(!sort)
+  };
+
 
   function handleSearch(e) {
 
@@ -282,13 +295,10 @@ function EmployeeHome() {
                 <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >Recent</button>
               </Grid>
               <Grid item xs={12} sm={2} >
-                <button className={homeStyle.jobs_filter_btn} onClick={()=>{
-                  let sortedData = [...jobs.sort((a,b)=> a.time[0] - b.time[1])];
-                  setJobs(sortedData)
-                }} >Part Time</button>
+                <button className={homeStyle.jobs_filter_btn} onClick={sortDaFull} >Part Time</button>
               </Grid>
               <Grid item xs={12} sm={2} >
-                <button className={homeStyle.jobs_filter_btn} >Full Time</button>
+                <button className={homeStyle.jobs_filter_btn} onClick={sortDaFull} >Full Time</button>
               </Grid>
               </Grid>
 

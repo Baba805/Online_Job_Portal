@@ -12,79 +12,114 @@ import Pricing from "../MAIN/Pages/Pricing/Pricing";
 import Register from "../MAIN/Pages/Register/Register";
 import EmployeeHome from "../MAIN/Pages/EmployeeHome/EmployeeHome";
 import EmployerHome from "../MAIN/Pages/EmployerHome/EmployerHome";
-import MainRootAdmin from "../MAIN/Pages/MainRootAdmin";
-import AddJob from '../MAIN/Pages/AddJob/AddJob'
+import AddJob from '../MAIN/Pages/AddJob/AddJob';
+import MainRootAdmin from '../MAIN/Pages/MainRootAdmin'
+import Services from '../ADMIN/Services/Services';
+import Jobs from '../ADMIN/Jobs/Jobs';
+import Blogs from '../ADMIN/blogs/Blogs';
+import Prices from '../ADMIN/Prices/Prices';
+import Comments from '../ADMIN/Comments/Comments'
+import Admin_Login from "../ADMIN/Admin_Login/Admin_Login";
+
+
 
 
 export const ROUTES = [
     {
-        path : '/',
-        element : <MainRoot/>,
-        children : [
+        path: '/',
+        element: <MainRoot />,
+        children: [
             {
-                path : '/aboutus',
-                element : <AboutUs/>
+                path: '/aboutus',
+                element: <AboutUs />
             },
             {
-                path : '/blogdetails',
-                element : <BlogDetails/>
+                path: '/blogdetails',
+                element: <BlogDetails />
             },
             {
-                path : '/bloggrids',
-                element : <BlogGrids/>
+                path: '/bloggrids',
+                element: <BlogGrids />
             },
             {
-                path : '/contactus',
-                element : <ContactUs/>
+                path: '/contactus',
+                element: <ContactUs />
             },
             {
-                path : '/home',
-                element : <Home/>
+                path: '/',
+                element: <Home />
             },
             {
-                path : '/jobdetails',
-                element : <JobDetails/>
+                path: '/jobdetails',
+                element: <JobDetails />
             },
             {
-                path : '/joblist',
-                element : <JobList/>
+                path: '/joblist',
+                element: <JobList />
             },
             {
-                path : '/login',
-                element : <Login/>
+                path: '/login',
+                element: <Login />
             },
             {
-                path : '/ourteam',
-                element : <OurTeam/>
+                path: '/ourteam',
+                element: <OurTeam />
             },
             {
-                path : '/register',
-                element : <Register/>
+                path: '/register',
+                element: <Register />
             },
             {
-                path : '/pricing',
-                element : <Pricing/>
+                path: '/pricing',
+                element: <Pricing />
             },
             {
-                path : '/employeehome',
-                element : <EmployeeHome/>
+                path: '/employeehome',
+                element: <EmployeeHome />
             },
             {
-                path : '/employerhome',
-                element : <EmployerHome/>
+                path: '/employerhome',
+                element: <EmployerHome />
             },
             {
-                path : '/addjob',
-                element : <AddJob/>
+                path: '/addjob',
+                element: <AddJob />
             },
+           
 
         ],
-        
-        
+
+
     },
     {
-        path :'/admin',
-        element : <MainRootAdmin/>,
-       
+        path: '/admin',
+        element: <MainRootAdmin/>,
+        children : [
+            {
+                path : 'services',
+                element : <Services/>
+            },
+            {
+                path : 'jobs',
+                element : <Jobs/>
+            },
+            {
+                path : 'prices',
+                element : <Prices/>
+            },
+            {
+                path : 'comments',
+                element : <Comments/>
+            },
+            {
+                path : 'blogs',
+                element : <Blogs/>
+            },
+            {
+                path : 'login',
+                element : <Admin_Login/>
+            }
+        ]
+
     }
 ]

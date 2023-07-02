@@ -1,0 +1,4 @@
+.react-slideshow-wrapper .images-wrap {
+    transform: translate(0px) !important;
+    width: 100% !important;
+}
