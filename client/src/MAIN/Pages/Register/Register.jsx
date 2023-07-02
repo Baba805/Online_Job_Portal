@@ -27,17 +27,17 @@ function Register() {
   const employeeValidation = yup.object().shape({
     name: yup.string().required("name is required"),
     surname: yup
-    .string().required("name is required"),
+      .string().required("name is required"),
     username: yup
       .string()
       .required("username is required"),
-      
+
   });
 
   const employerValidation = yup.object().shape({
     companyName: yup.string().required("name is required"),
     surname: yup
-    .string().required("surname is required"),
+      .string().required("surname is required"),
     username: yup
       .string()
       .required("username is required"),
@@ -47,33 +47,33 @@ function Register() {
   const [category, setCategory] = useState("")
 
 
-// REGISTER FORMIK FOR EMPLOYEE
+  // REGISTER FORMIK FOR EMPLOYEE
 
   // const employeeHandleChange = (event) => {
   //   setCategory(event.target.value);
   // };
 
   const navigate = useNavigate();
-  const employeeHandleSubmit = async (values,actions)=>{
+  const employeeHandleSubmit = async (values, actions) => {
     console.log(values);
 
-  if (values.password === values.confirmPassword) {
-    await SignUpEmployee(values)
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'REGISTER HAS BEEN SUCCESFULLY',
-      showConfirmButton: false,
-      timer: 1500
-    })
-    
-  
+    if (values.password === values.confirmPassword) {
+      await SignUpEmployee(values)
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'REGISTER HAS BEEN SUCCESFULLY',
+        showConfirmButton: false,
+        timer: 1500
+      })
 
-    
-    actions.resetForm();
-    navigate('/login')
+
+
+
+      actions.resetForm();
+      navigate('/login')
+    }
   }
-}
 
 
   const employeeFormik = useFormik({
@@ -87,46 +87,48 @@ function Register() {
       category: '',
       email: ''
     },
-    validationSchema : employeeValidation,
-    onSubmit : employeeHandleSubmit
+    validationSchema: employeeValidation,
+    onSubmit: employeeHandleSubmit
   })
-// REGISTER FORMIK FOR EMPLOYER
+  // REGISTER FORMIK FOR EMPLOYER
 
-const employerHandleSubmit = async (values, actions)=>{
-  if (values.password == values.confirmPassword) {
-    await SignUpEmployer(values)
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'REGISTER HAS BEEN SUCCESFULLY',
-      showConfirmButton: false,
-      timer: 1500
-    })
+  const employerHandleSubmit = async (values, actions) => {
 
+    if (values.password == values.confirmPassword) {
+      await SignUpEmployer(values)
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'REGISTER HAS BEEN SUCCESFULLY',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+
+    }
     actions.resetForm();
     navigate('/login')
+
+
+
+
+
   }
-    
-  
 
-    
-   
-}
-
-// const employerHandleChange = (event) => {
-//   setCategory(event.target.value);
-// };
+  // const employerHandleChange = (event) => {
+  //   setCategory(event.target.value);
+  // };
 
   const employerFormik = useFormik({
-    initialValues : {
-      companyName : '',
-      username : '',
-      email : '',
-      password : '',
-      confirmPassword : '',
+    initialValues: {
+      companyName: '',
+      username: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
-    onSubmit : employerHandleSubmit,
-    validationSchema : employerValidation
+    onSubmit: employerHandleSubmit,
+    validationSchema: employerValidation
   })
 
   const [justifyActive, setJustifyActive] = useState('tab1');;
@@ -183,37 +185,37 @@ const employerHandleSubmit = async (values, actions)=>{
             <p className="text-center mt-3">or:</p>
           </div>
 
-         <form onSubmit={employeeFormik.handleSubmit} >
-        <MDBInput  onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.name}  name='name' wrapperClass='mb-4' label='Name' id='form11' type='text' />
-          <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.username}  name='username' wrapperClass='mb-4' label='Username' id='form12' type='text' />
-          <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.surname}  name='surname' wrapperClass='mb-4' label='Surname' id='form13' type='text' />
-          <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.email}  name='email' wrapperClass='mb-4' label='Email' id='form14' type='email' />
-          <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.age}  name='age' wrapperClass='mb-4' label='age' id='form15' type='number' />
-          <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.password}  name='password' wrapperClass='mb-4' label='Password' id='form16' type='password' />
-          <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.confirmPassword}  name='confirmPassword' wrapperClass='mb-4' label='Confirm Password' id='form1' type='password' />
-          <InputLabel id="demo-simple-select-label">CATEGORY</InputLabel>
-          <Select   sx={{ minWidth: 200 }}
-          
-            labelId="demo-simple-select-label"
-            id="demo-simple-selectt"
-            name='category'
-            value={employeeFormik.values.category}
-            label="category"
-            onChange={employeeFormik.handleChange}
-          >  
-            <MenuItem value={"Front End Developer"}>Front End Developer</MenuItem>
-            <MenuItem value={"Back end Developer"}>Back end Developer</MenuItem>
-            <MenuItem value={"UI / UX Designer"}>UI / UX Designer</MenuItem>
-            <MenuItem value={"System Adminstration"}>System Adminstration</MenuItem>
-          </Select>
-        
+          <form onSubmit={employeeFormik.handleSubmit} >
+            <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.name} name='name' wrapperClass='mb-4' label='Name' id='form11' type='text' />
+            <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.username} name='username' wrapperClass='mb-4' label='Username' id='form12' type='text' />
+            <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.surname} name='surname' wrapperClass='mb-4' label='Surname' id='form13' type='text' />
+            <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.email} name='email' wrapperClass='mb-4' label='Email' id='form14' type='email' />
+            <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.age} name='age' wrapperClass='mb-4' label='age' id='form15' type='number' />
+            <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.password} name='password' wrapperClass='mb-4' label='Password' id='form16' type='password' />
+            <MDBInput onChange={employeeFormik.handleChange} onBlur={employeeFormik.handleBlur} value={employeeFormik.values.confirmPassword} name='confirmPassword' wrapperClass='mb-4' label='Confirm Password' id='form1' type='password' />
+            <InputLabel id="demo-simple-select-label">CATEGORY</InputLabel>
+            <Select sx={{ minWidth: 200 }}
+
+              labelId="demo-simple-select-label"
+              id="demo-simple-selectt"
+              name='category'
+              value={employeeFormik.values.category}
+              label="category"
+              onChange={employeeFormik.handleChange}
+            >
+              <MenuItem value={"Front End Developer"}>Front End Developer</MenuItem>
+              <MenuItem value={"Back end Developer"}>Back end Developer</MenuItem>
+              <MenuItem value={"UI / UX Designer"}>UI / UX Designer</MenuItem>
+              <MenuItem value={"System Adminstration"}>System Adminstration</MenuItem>
+            </Select>
 
 
-          <div className='d-flex justify-content-center mb-4'>
-            <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />
-          </div>
 
-          <MDBBtn type='submit' className="mb-4 w-100">Sign up</MDBBtn>
+            <div className='d-flex justify-content-center mb-4'>
+              <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />
+            </div>
+
+            <MDBBtn type='submit' className="mb-4 w-100">Sign up</MDBBtn>
           </form >
 
         </MDBTabsPane>
@@ -244,22 +246,22 @@ const employerHandleSubmit = async (values, actions)=>{
             <p className="text-center mt-3">or:</p>
           </div>
 
-         <form onSubmit={employerFormik.handleSubmit} >
-         <MDBInput wrapperClass='mb-4'  onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur}  value={employerFormik.values.companyName} name='companyName'   label='Company Name' id='form22' type='text' />
-          <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur}  value={employerFormik.values.username} name='username'  label='Username' id='form23' type='text' />
-          <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur}  value={employerFormik.values.email}  name='email' label='Email' id='form24' type='email' />
-          <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur}  value={employerFormik.values.password} name='password'  label='Password' id='form25' type='password' />
-          <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur}  value={employerFormik.values.confirmPassword} name='confirmPassword'  label='confirm Password' id='form26' type='password' />
+          <form onSubmit={employerFormik.handleSubmit} >
+            <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur} value={employerFormik.values.companyName} name='companyName' label='Company Name' id='form22' type='text' />
+            <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur} value={employerFormik.values.username} name='username' label='Username' id='form23' type='text' />
+            <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur} value={employerFormik.values.email} name='email' label='Email' id='form24' type='email' />
+            <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur} value={employerFormik.values.password} name='password' label='Password' id='form25' type='password' />
+            <MDBInput wrapperClass='mb-4' onChange={employerFormik.handleChange} onBlur={employerFormik.handleBlur} value={employerFormik.values.confirmPassword} name='confirmPassword' label='confirm Password' id='form26' type='password' />
 
 
 
-          {/* <div className='d-flex justify-content-center mb-4'>
+            {/* <div className='d-flex justify-content-center mb-4'>
             <MDBCheckbox name='flexCheck' id='flexCheckDefault' label='I have read and agree to the terms' />
           </div> */}
 
-          <MDBBtn className="mb-4 w-100" type='submit' >Sign up</MDBBtn>
+            <MDBBtn className="mb-4 w-100" type='submit' >Sign up</MDBBtn>
 
-         </form>
+          </form>
         </MDBTabsPane>
 
       </MDBTabsContent>

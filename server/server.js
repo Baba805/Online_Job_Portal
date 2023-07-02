@@ -88,7 +88,7 @@ app.post('/api/register/employee', async (req, res) => {
 // REGISTER FOR EMPLOYER
 
 app.post('/api/register/employer', async (req,res)=>{
-  const {companyName , email , password} = req.body;
+  const {companyName ,username, email , password} = req.body;
   const existedEmail = await employerModel.findOne({email : email});
   const exittedCompanyName = await employerModel.findOne({companyName : companyName});
   if (existedEmail) {
@@ -104,7 +104,8 @@ app.post('/api/register/employer', async (req,res)=>{
   const newEmpoyer = new employerModel({
     companyName : companyName,
     password: hashedPasword,
-    email: email
+    email: email,
+    username : username
     
     
   })

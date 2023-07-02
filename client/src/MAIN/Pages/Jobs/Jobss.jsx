@@ -1,9 +1,9 @@
 import { Box, Button, Container, Grid, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { getvacancies } from '../../Api/request';
 import JobsStyle from './Jobs.module.css'
 import { MDBBtn } from 'mdb-react-ui-kit';
+import { getvacancies } from '../../../Api/request';
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -124,7 +124,6 @@ function Jobs() {
                         <div className={JobsStyle.jobs_buttons} >
                           <button className={JobsStyle.jobs_button_apply} type='button'   >Apply Now</button>
                           <button className={JobsStyle.jobs_button_full}  >{vacancie.time}</button>
-                          <MDBBtn type='submit' color='danger'>Delete</MDBBtn>
                         </div>
                       </div>
 

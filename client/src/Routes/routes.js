@@ -15,11 +15,12 @@ import EmployerHome from "../MAIN/Pages/EmployerHome/EmployerHome";
 import AddJob from '../MAIN/Pages/AddJob/AddJob';
 import MainRootAdmin from '../MAIN/Pages/MainRootAdmin'
 import Services from '../ADMIN/Services/Services';
-import Jobs from '../ADMIN/Jobs/Jobs';
+import Jobs from '../ADMIN/Jobs/Jobs'
 import Blogs from '../ADMIN/blogs/Blogs';
-import Prices from '../ADMIN/Prices/Prices';
+import Prices from "../ADMIN/Pricess/Prices";
 import Comments from '../ADMIN/Comments/Comments'
 import Admin_Login from "../ADMIN/Admin_Login/Admin_Login";
+import Jobss from '../MAIN/Pages/Jobs/Jobss'
 
 
 
@@ -84,6 +85,10 @@ export const ROUTES = [
             {
                 path: '/addjob',
                 element: <AddJob />
+            },
+            {
+                path: '/jobs',
+                element: <Jobss/>
             },
            
 
