@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Box, Button, Container, Grid, TextField } from '@mui/material'
-import { getPrices } from '../../Api/request';
+import { deletePriceByID, getPrices } from '../../Api/request';
 import PricesStyle from './Prices.module.css'
 import { MDBBtn } from 'mdb-react-ui-kit';
+import Swal from 'sweetalert2';
 
 
 function Prices() {
@@ -29,6 +30,9 @@ function Prices() {
       <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" alt="" />
     </div>
 
+    <Button variant='contained' style={{marginBottom : '50px', marginLeft : '80px'}} > <Link style={{color : 'wheat'}} to='/admin/addprices' >Add Services</Link> </Button>
+
+
     <div>
       <Container maxWidth='xl'>
         <Box sx={{ flexGrow: 1 }}>
@@ -52,7 +56,28 @@ function Prices() {
                       </ul>
                       <div style={{display : 'flex', justifyContent : 'space-between', alignItems:'center', flexDirection : 'column' , height : '100px'}} >
                       <button className={PricesStyle.price_button} type='button'    > Sign Up </button>
-                      <MDBBtn type='submit' color='danger' >Delete</MDBBtn>
+                      <MDBBtn type='submit' color='danger' onClick={() => {
+                      Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          deletePriceByID(price._id).then((res) => {
+                            Swal.fire(
+                              'Deleted!',
+                              'Your jobs has been deleted.',
+                              'success'
+                            )
+                          })
+                          setPrices(prices.filter((x) => x._id !== price._id))
+                        }
+                      })
+                    }}   >Delete</MDBBtn>
                       </div>
                       
 

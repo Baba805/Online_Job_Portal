@@ -66,10 +66,6 @@ function Register() {
         showConfirmButton: false,
         timer: 1500
       })
-
-
-
-
       actions.resetForm();
       navigate('/login')
     }
@@ -108,11 +104,6 @@ function Register() {
     }
     actions.resetForm();
     navigate('/login')
-
-
-
-
-
   }
 
   // const employerHandleChange = (event) => {

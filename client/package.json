@@ -25,6 +25,7 @@
     "react-scripts": "5.0.1",
     "react-slideshow-image": "^4.2.1",
     "react-social-login-buttons": "^3.9.1",
+    "sass": "^1.63.6",
     "sweetalert2": "^11.7.12",
     "web-vitals": "^2.1.4",
     "yup": "^1.2.0"

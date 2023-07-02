@@ -110,10 +110,18 @@ export const postServices = (payload) => {
     return globalData;
   };
 
+   //delete VACANCIES by  ID
+export const deleteVacantieByID = async (ID) => {
+  let deletedVacancie;
+  await axios.delete(`${BASE_URL}/vacancies/${ID}`).then((res) => {
+    deletedVacancie = res.data
+  });
+}
+
   // POST VACANCIES 
 
   export const postVacancies = async (payload)=>{
-    axios.post(`${BASE_URL}/vacancies`, payload)
+   await axios.post(`${BASE_URL}/vacancies`, payload)
   }
 
 
@@ -132,7 +140,7 @@ export const postServices = (payload) => {
   //delete BLOGS by  ID
 export const deleteBlogByID = async (ID) => {
   let deletedBlog;
-  await axios.delete(`${BASE_URL}/blogs/${ID}`).then((res) => {
+  await axios.delete(`${BASE_URL}/blog/${ID}`).then((res) => {
     deletedBlog = res.data
   });
 
@@ -140,7 +148,7 @@ export const deleteBlogByID = async (ID) => {
 };
 // POST BLOG
 export const postBlog = (payload) => {
-  axios.post(`${BASE_URL}/blogs`, payload);
+  axios.post(`${BASE_URL}/blog`, payload);
 };
 
    // GET ALL PRICES

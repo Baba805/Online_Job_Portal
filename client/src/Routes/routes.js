@@ -22,6 +22,9 @@ import Comments from '../ADMIN/Comments/Comments'
 import Admin_Login from "../ADMIN/Admin_Login/Admin_Login";
 import Jobss from '../MAIN/Pages/Jobs/Jobss'
 import AddServices from "../ADMIN/AddServices/AddServices";
+import AddPrices from "../ADMIN/AddPrices/AddPrices";
+import AddBlog from "../ADMIN/AddBlog/AddBlog";
+
 
 
 
@@ -128,6 +131,14 @@ export const ROUTES = [
             {
                 path : 'addservices',
                 element : <AddServices/>
+            },
+            {
+                path : 'addprices',
+                element : <AddPrices/>
+            },
+            {
+                path : 'addblog',
+                element : <AddBlog/>
             }
         ]
 

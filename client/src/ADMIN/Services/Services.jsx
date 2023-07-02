@@ -64,7 +64,7 @@ function Services() {
                           deleteServicesByID(service._id).then((res) => {
                             Swal.fire(
                               'Deleted!',
-                              'Your file has been deleted.',
+                              'Your services has been deleted.',
                               'success'
                             )
                           })
