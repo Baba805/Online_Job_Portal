@@ -21,6 +21,7 @@ import Prices from "../ADMIN/Pricess/Prices";
 import Comments from '../ADMIN/Comments/Comments'
 import Admin_Login from "../ADMIN/Admin_Login/Admin_Login";
 import Jobss from '../MAIN/Pages/Jobs/Jobss'
+import AddServices from "../ADMIN/AddServices/AddServices";
 
 
 
@@ -123,6 +124,10 @@ export const ROUTES = [
             {
                 path : 'login',
                 element : <Admin_Login/>
+            },
+            {
+                path : 'addservices',
+                element : <AddServices/>
             }
         ]
 

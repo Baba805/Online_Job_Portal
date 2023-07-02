@@ -63,6 +63,20 @@ export const AdminLogin = async (payload)=>{
     return services;
  }
 
+ //delete SERVICES by  ID
+export const deleteServicesByID = async (ID) => {
+  let deletedServices;
+  await axios.delete(`${BASE_URL}/servives/${ID}`).then((res) => {
+    deletedServices = res.data
+  });
+
+  return deletedServices;
+};
+// POST SEERVICES
+export const postServices = (payload) => {
+  axios.post(`${BASE_URL}/servives`, payload);
+};
+
  // GET ALL VACANCIES
 
  export const getvacancies = async (name,time)=>{
@@ -115,6 +129,20 @@ export const AdminLogin = async (payload)=>{
     return blogs
  }
 
+  //delete BLOGS by  ID
+export const deleteBlogByID = async (ID) => {
+  let deletedBlog;
+  await axios.delete(`${BASE_URL}/blogs/${ID}`).then((res) => {
+    deletedBlog = res.data
+  });
+
+  return deletedBlog;
+};
+// POST BLOG
+export const postBlog = (payload) => {
+  axios.post(`${BASE_URL}/blogs`, payload);
+};
+
    // GET ALL PRICES
 
    export const getPrices = async ()=>{
@@ -125,6 +153,19 @@ export const AdminLogin = async (payload)=>{
 
     return price
  }
+  //delete PRICE by  ID
+export const deletePriceByID = async (ID) => {
+  let deletedPrice;
+  await axios.delete(`${BASE_URL}/prices/${ID}`).then((res) => {
+    deletedPrice = res.data
+  });
+
+  return deletedPrice;
+};
+// POST PRICES
+export const postPrice = (payload) => {
+  axios.post(`${BASE_URL}/prices`, payload);
+};
 
  // GET ALL OURTEAM
 
@@ -137,6 +178,21 @@ export const AdminLogin = async (payload)=>{
     return ourteam
  }
 
+ //delete OURTEAM by  ID
+export const deleteOurTeamByID = async (ID) => {
+  let deletedOurTeam;
+  await axios.delete(`${BASE_URL}/ourteam/${ID}`).then((res) => {
+    deletedOurTeam = res.data
+  });
+
+  return deletedOurTeam;
+};
+
+// POST OURTEAM
+export const postOurTeam = (payload) => {
+  axios.post(`${BASE_URL}/ourteam`, payload);
+};
+
   // GET ALL COMMENTS
 
   export const getComment = async ()=>{
@@ -147,6 +203,20 @@ export const AdminLogin = async (payload)=>{
 
     return comment
  }
+ //delete COMMENT by  ID
+export const deleteCommentByID = async (ID) => {
+  let deletedComment;
+  await axios.delete(`${BASE_URL}/comment/${ID}`).then((res) => {
+    deletedComment = res.data
+  });
+
+  return deletedComment;
+};
+
+// POST COMMENT
+export const postComment = (payload) => {
+  axios.post(`${BASE_URL}/comment`, payload);
+};
 
   // GET ALL CONTACTUS
 
@@ -158,3 +228,18 @@ export const AdminLogin = async (payload)=>{
 
     return contactus
  }
+
+  //delete CONTACTUS by  ID
+export const deleteContactUsByID = async (ID) => {
+  let deletedContactUs;
+  await axios.delete(`${BASE_URL}/contactus/${ID}`).then((res) => {
+    deletedContactUs = res.data
+  });
+
+  return deletedContactUs;
+};
+
+// POST CONTACTUS
+export const postContactUs = (payload) => {
+  axios.post(`${BASE_URL}/contactus`, payload);
+};
