@@ -21,6 +21,10 @@ function Home() {
   const [blogs, setBlogs] = useState([]);
   const [prices, setPrices] = useState([]);
 
+  const [search , setSearch] = useState('');
+
+
+
 
 
   useEffect(() => {
@@ -220,7 +224,8 @@ function Home() {
           <Box sx={{ flexGrow: 1 }}>
 
             <Grid container spacing={2}>
-              {services && services.map((service) => {
+              {services && services
+              .map((service) => {
                 return (
                   <>
                     <Grid item xs={6} md={4} >
@@ -253,7 +258,7 @@ function Home() {
         <Container maxWidth='xl'  >
           <div  >
             <TextField
-              onChange={(e) => handleSearch(e)}
+              onChange={(e) => setSearch(e.target.value)}
               style={{ marginBottom: "30px" }}
               id="outlined-basic"
               label="Search Artist"
@@ -296,7 +301,10 @@ function Home() {
 
 
             <Grid container spacing={2}>
-              {jobs && jobs.map((vacancie) => {
+              {jobs && jobs
+              .filter((item)=>{
+                return search.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(search)
+              }).map((vacancie) => {
                 return (
                   <>
                     <Grid item xs={6} md={4} >

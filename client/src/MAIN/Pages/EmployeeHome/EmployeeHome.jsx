@@ -21,6 +21,8 @@ function EmployeeHome() {
   const [blogs, setBlogs] = useState([]);
   const [prices, setPrices] = useState([]);
   const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState('');
+
 
 
   const navigate = useNavigate();
@@ -265,7 +267,7 @@ function EmployeeHome() {
         <Container maxWidth='xl' style={{display: 'flex', justifyContent : 'start', alignItems : 'start'}} >
 
           <TextField
-            onChange={(e) => handleSearch(e)}
+             onChange={(e) => setSearch(e.target.value)}
             style={{ marginBottom: "30px" }}
             id="outlined-basic"
             label="Search Artist"
@@ -303,7 +305,11 @@ function EmployeeHome() {
               </Grid>
 
             <Grid container spacing={2}>
-              {jobs && jobs.map((vacancie) => {
+              {jobs && jobs
+              .filter((item) => {
+                return search.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(search)
+              })
+              .map((vacancie) => {
                 return (
                   <>
                     <Grid item xs={6} md={4} >

@@ -36,8 +36,8 @@ function Register() {
 
   const employerValidation = yup.object().shape({
     companyName: yup.string().required("name is required"),
-    surname: yup
-      .string().required("surname is required"),
+    email: yup
+      .string().email("email is not correct format").required("email is required"),
     username: yup
       .string()
       .required("username is required"),
@@ -89,7 +89,7 @@ function Register() {
   // REGISTER FORMIK FOR EMPLOYER
 
   const employerHandleSubmit = async (values, actions) => {
-
+    console.log(values)
     if (values.password == values.confirmPassword) {
       await SignUpEmployer(values)
       Swal.fire({

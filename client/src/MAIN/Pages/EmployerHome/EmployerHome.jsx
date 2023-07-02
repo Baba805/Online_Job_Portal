@@ -20,7 +20,9 @@ function EmployerHome() {
   const [jobs, setJobs] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [prices, setPrices] = useState([]);
-  const[users,setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState('');
+
 
 
   const navigate = useNavigate();
@@ -32,11 +34,11 @@ function EmployerHome() {
     })
   }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
     if (!localStorage.getItem('user')) {
       navigate('/login');
     }
-  },[])
+  }, [])
 
 
 
@@ -67,17 +69,17 @@ function EmployerHome() {
     })
   }, [])
 
-// SLIDER
+  // SLIDER
   const proprietes = {
     duration: 10500,
     transitionDuration: 500,
     infinite: true,
     indicators: true,
     arrows: true
-}
-const images = [
+  }
+  const images = [
     `${comment.imageUrl}`
-];
+  ];
 
 
   const sortDataRecent = () => {
@@ -107,17 +109,17 @@ const images = [
   };
   const [sort, setSort] = useState(true)
 
-  const sortByPartTime =()=>{
+  const sortByPartTime = () => {
 
   }
 
-  const sortDataFull =()=>{
-    const sortedData = [...jobs].sort((a,b)=>{
+  const sortDataFull = () => {
+    const sortedData = [...jobs].sort((a, b) => {
       if (sort) {
         if (a.time) {
           return a.time.localeCompare(b.time)
         }
-        
+
       }
       else b.time.localeCompare(a.time)
     })
@@ -130,7 +132,7 @@ const images = [
 
 
   function handleSearch(e) {
-  
+
     getvacancies(e.target.value).then((res) => {
       setJobs(res);
     });
@@ -286,14 +288,15 @@ const images = [
           <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" alt="" />
         </div>
         <Container maxWidth='xl'>
-        <TextField
-            onChange={(e) => handleSearch(e)}
+          <TextField
+            onChange={(e) => setSearch(e.target.value)}
+
             style={{ marginBottom: "30px" }}
             id="outlined-basic"
             label="Search Artist"
             variant="outlined"
           />
-           <Button
+          <Button
             variant="contained"
             color="success"
             style={{ marginLeft: '10px' }}
@@ -302,58 +305,61 @@ const images = [
               setJobs(sortedSale);
             }}
           >Sort</Button>
-          </Container>
+        </Container>
 
         <Container maxWidth='xl'>
           <Box sx={{ flexGrow: 1 }}>
 
             <Grid container spacing={1} className={homeStyle.jobs_filter_div}  >
-            <Grid item xs={12} sm={2} >
+              <Grid item xs={12} sm={2} >
                 <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >All</button>
               </Grid>
               <Grid item xs={12} sm={2} >
                 <button className={homeStyle.jobs_filter_btn} onClick={sortDataRecent} >Recent</button>
               </Grid>
               <Grid item xs={12} sm={2} >
-                <button className={homeStyle.jobs_filter_btn}onClick={sortDaFull} >Part Time</button>
+                <button className={homeStyle.jobs_filter_btn} onClick={sortDaFull} >Part Time</button>
               </Grid>
               <Grid item xs={12} sm={2} >
                 <button className={homeStyle.jobs_filter_btn} onClick={sortDaFull} >Full Time</button>
               </Grid>
               <Grid item xs={12} sm={2} >
-                <button className={homeStyle.jobs_filter_btn}  > <Link className={homeStyle.jobs_filter_btn} style={{border : 'none'}} to='/addjob'> Add New Job </Link> </button>
+                <button className={homeStyle.jobs_filter_btn}  > <Link className={homeStyle.jobs_filter_btn} style={{ border: 'none' }} to='/addjob'> Add New Job </Link> </button>
               </Grid>
-              </Grid>
-              </Box>
-              </Container>
+            </Grid>
+          </Box>
+        </Container>
         <Container maxWidth='xl'>
           <Box sx={{ flexGrow: 1 }}>
 
             <Grid container spacing={2}>
-              {jobs && jobs.map((vacancie) => {
-                return (
-                  <>
-                    <Grid item xs={6} md={4} >
+              {jobs && jobs
+                .filter((item) => {
+                  return search.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(search)
+                }).map((vacancie) => {
+                  return (
+                    <>
+                      <Grid item xs={6} md={4} >
 
-                      <div className={homeStyle.jobs_card} >
-                        <div className={homeStyle.jobs_img} >
-                          <img src={vacancie.imageUrl} width='89px' height='89px' alt="" />
+                        <div className={homeStyle.jobs_card} >
+                          <div className={homeStyle.jobs_img} >
+                            <img src={vacancie.imageUrl} width='89px' height='89px' alt="" />
+                          </div>
+                          <div className={homeStyle.jobs_title} >
+                            <h4 className={homeStyle.jobs_title_h4} > {vacancie.name} </h4>
+                            <p className={homeStyle.jobs_title_p}  >   <img src="http://sbtechnosoft.com/guidepro/images/money-bag-icon.png" alt="" /> $  {vacancie.sale}  </p>
+                            <p className={homeStyle.jobs_title_p_} style={{ marginTop: '10px' }} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
+                          </div>
+                          <div className={homeStyle.jobs_buttons} >
+                            <button className={homeStyle.jobs_button_full} >{vacancie.time}</button>
+                          </div>
                         </div>
-                        <div className={homeStyle.jobs_title} >
-                          <h4 className={homeStyle.jobs_title_h4} > {vacancie.name} </h4>
-                          <p className={homeStyle.jobs_title_p}  >   <img src="http://sbtechnosoft.com/guidepro/images/money-bag-icon.png" alt="" /> $  {vacancie.sale}  </p>
-                          <p className={homeStyle.jobs_title_p_} style={{ marginTop: '10px' }} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
-                        </div>
-                        <div className={homeStyle.jobs_buttons} >
-                          <button className={homeStyle.jobs_button_full} >{ vacancie.time }</button>
-                        </div>
-                      </div>
 
-                    </Grid>
+                      </Grid>
 
-                  </>
-                )
-              })}
+                    </>
+                  )
+                })}
 
             </Grid>
           </Box>
@@ -468,87 +474,87 @@ const images = [
         <Container maxWidth='xl'>
           <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-            <Grid item xs={12} sm={6} md={3} >
-               
-                <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
-                  <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon1.png" alt="" />
+              <Grid item xs={12} sm={6} md={3} >
+
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                  <img style={{ marginBottom: '10px' }} src="http://sbtechnosoft.com/guidepro/images/count/count-icon1.png" alt="" />
                   <h4 className={homeStyle.count_h4} >150+</h4>
                   <span className={homeStyle.count_span} >FACULTIES</span>
                 </div>
-                
-            </Grid>
-            <Grid item xs={12} sm={6} md={3} >
-               
-               <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
-                 <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon2.png" alt="" />
-                 <h4 className={homeStyle.count_h4} >2300+</h4>
-                 <span className={homeStyle.count_span} >STUDENTS</span>
-               </div>
-               
-           </Grid>
-           <Grid item xs={12} sm={6} md={3} >
-               
-               <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
-                 <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon3.png" alt="" />
-                 <h4 className={homeStyle.count_h4} >40+</h4>
-                 <span className={homeStyle.count_span} >COURSES</span>
-               </div>
-               
-           </Grid>
-           <Grid item xs={12} sm={6} md={3} >
-               
-               <div  style={{display : 'flex' , flexDirection : 'column', justifyContent : 'center', alignItems: 'center' }} >
-                 <img  style={{marginBottom : '10px'}} src="http://sbtechnosoft.com/guidepro/images/count/count-icon4.png" alt="" />
-                 <h4 className={homeStyle.count_h4} >80+</h4>
-                 <span className={homeStyle.count_span} >COUNTRIES</span>
-               </div>
-               
-           </Grid>
+
+              </Grid>
+              <Grid item xs={12} sm={6} md={3} >
+
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                  <img style={{ marginBottom: '10px' }} src="http://sbtechnosoft.com/guidepro/images/count/count-icon2.png" alt="" />
+                  <h4 className={homeStyle.count_h4} >2300+</h4>
+                  <span className={homeStyle.count_span} >STUDENTS</span>
+                </div>
+
+              </Grid>
+              <Grid item xs={12} sm={6} md={3} >
+
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                  <img style={{ marginBottom: '10px' }} src="http://sbtechnosoft.com/guidepro/images/count/count-icon3.png" alt="" />
+                  <h4 className={homeStyle.count_h4} >40+</h4>
+                  <span className={homeStyle.count_span} >COURSES</span>
+                </div>
+
+              </Grid>
+              <Grid item xs={12} sm={6} md={3} >
+
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                  <img style={{ marginBottom: '10px' }} src="http://sbtechnosoft.com/guidepro/images/count/count-icon4.png" alt="" />
+                  <h4 className={homeStyle.count_h4} >80+</h4>
+                  <span className={homeStyle.count_span} >COUNTRIES</span>
+                </div>
+
+              </Grid>
             </Grid>
           </Box>
         </Container>
       </section>
       <section className={homeStyle.comments} >
 
-      <div style={{ textAlign: 'center', marginTop: '90px', marginBottom: '90px' }} >
+        <div style={{ textAlign: 'center', marginTop: '90px', marginBottom: '90px' }} >
           <h3 className={homeStyle.third_h3} >Happy Candidates</h3>
           <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" style={{ opacity: '0.3' }} alt="" />
         </div>
 
-        
 
-      
-      <div className="containerSlide">
-                
-                    <Slide {...proprietes}>
-                    {comment && comment.map((comment)=>{
-                  return(
-                    <>
-                    <div style={{display : 'flex' , justifyContent : 'center' , alignItems : 'center', marginLeft : '300px', marginRight : '300px'}} >
-                      <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
+
+
+        <div className="containerSlide">
+
+          <Slide {...proprietes}>
+            {comment && comment.map((comment) => {
+              return (
+                <>
+                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginLeft: '300px', marginRight: '300px' }} >
+                    <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
                     <div className="each-slide-1">
-                        <div className='slide-1-text'>
-                           
-                            <p  className={homeStyle.slider_p} > {comment.title} </p>
-                           
-                        </div>
-                        <div style={{display: 'flex', justifyContent : 'center', alignItems : 'center', flexDirection : 'column'}} className='slide-1-img'>
-                            <img className={homeStyle.slider_img} src={comment.imageUrl} alt="img0" />
-                            <h1 className={homeStyle.slider_h1} > {comment.name} </h1>
-                            <p className={homeStyle.slider_p} >  {comment.posession} </p>
-                        </div>
-                        
+                      <div className='slide-1-text'>
+
+                        <p className={homeStyle.slider_p} > {comment.title} </p>
+
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }} className='slide-1-img'>
+                        <img className={homeStyle.slider_img} src={comment.imageUrl} alt="img0" />
+                        <h1 className={homeStyle.slider_h1} > {comment.name} </h1>
+                        <p className={homeStyle.slider_p} >  {comment.posession} </p>
+                      </div>
+
                     </div >
                     <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
-                    </div>
-                    </>
-                  )
-                })}
-                </Slide >
-                    
-            </div >
+                  </div>
+                </>
+              )
+            })}
+          </Slide >
+
+        </div >
       </section>
-      
+
     </>
   )
 }

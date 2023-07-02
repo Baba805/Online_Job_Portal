@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import {Link ,  useNavigate } from 'react-router-dom';
 import { Slide } from 'react-slideshow-image';
-import { getComment } from '../../Api/request';
+import { deleteCommentByID, getComment } from '../../Api/request';
 import CommentStyle from './Comments.module.css'
+import Swal from 'sweetalert2';
+import { MDBBtn } from 'mdb-react-ui-kit';
+import { Box, Button, Container, Grid, TextField } from '@mui/material'
+
 
 function Comments() {
   const navigate = useNavigate();
@@ -39,6 +43,11 @@ function Comments() {
       <h3 className={CommentStyle.third_h3} >Happy Candidates</h3>
       <img src="http://sbtechnosoft.com/guidepro/images/title-border.png" style={{ opacity: '0.3' }} alt="" />
     </div>
+
+<div style={{display : 'flex' , justifyContent : 'center', alignItems : 'center'}} >
+<Button variant='contained' style={{marginBottom : '50px', marginLeft : '80px'}} > <Link style={{color : 'wheat'}} to='/admin/addcomment' >Add Commnet</Link> </Button>
+
+</div>
 
 
 
@@ -78,10 +87,35 @@ function Comments() {
                 </div >
                 <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
               </div>
+              <div style={{display : 'flex', justifyContent : 'center', alignItems : 'center'}} >
+              <MDBBtn className={{textAlign : 'center'}} type='submit' color='danger' onClick={() => {
+                      Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          deleteCommentByID(comments._id).then((res) => {
+                            Swal.fire(
+                              'Deleted!',
+                              'Your jobs has been deleted.',
+                              'success'
+                            )
+                          })
+                          setComment(comment.filter((x) => x._id !== comments._id))
+                        }
+                      })
+                    }}   >Delete</MDBBtn>
+              </div>
             </>
           )
         })}
       </Slide >
+      
 
     </div >
   </section>
