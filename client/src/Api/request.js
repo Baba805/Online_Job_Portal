@@ -2,14 +2,14 @@ import { BASE_URL } from "./base_url";
 import axios from 'axios'
 
 // REGISTER FOR EMPLOYEE
-export const SignUpEmployee = (payload)=>{
-    axios.post(`${BASE_URL}/register/employee`,payload)
+export const SignUpEmployee = async (payload)=>{
+ await   axios.post(`${BASE_URL}/register/employee`,payload)
 }
 
 
 // REGISTER FOR EMPLOYER
-export const SignUpEmployer = (payload)=>{
-    axios.post(`${BASE_URL}/register/employer`,payload)
+export const SignUpEmployer = async (payload)=>{
+  await  axios.post(`${BASE_URL}/register/employer`,payload)
 }
 
 
@@ -31,9 +31,9 @@ export const AdminLogin = async (payload)=>{
 
  // GET EMPLOYEE
 
- export const getEmployee = ()=>{
+ export const getEmployee = async ()=>{
     let employee;
-    axios.get(`${BASE_URL}/employee`).then((res)=>{
+  await  axios.get(`${BASE_URL}/employee`).then((res)=>{
         employee = res.data
     })
 
@@ -43,9 +43,9 @@ export const AdminLogin = async (payload)=>{
 
  // GET EMPLOYER
 
- export const getEmployer = ()=>{
+ export const getEmployer = async ()=>{
     let employer;
-    axios.get(`${BASE_URL}/employer`).then((res)=>{
+    await axios.get(`${BASE_URL}/employer`).then((res)=>{
         employer = res.data
     })
 
@@ -73,8 +73,8 @@ export const deleteServicesByID = async (ID) => {
   return deletedServices;
 };
 // POST SEERVICES
-export const postServices = (payload) => {
-  axios.post(`${BASE_URL}/servives`, payload);
+export const postServices = async (payload) => {
+ await axios.post(`${BASE_URL}/servives`, payload);
 };
 
  // GET ALL VACANCIES
@@ -147,8 +147,8 @@ export const deleteBlogByID = async (ID) => {
   return deletedBlog;
 };
 // POST BLOG
-export const postBlog = (payload) => {
-  axios.post(`${BASE_URL}/blog`, payload);
+export const postBlog = async (payload) => {
+  await axios.post(`${BASE_URL}/blog`, payload);
 };
 
    // GET ALL PRICES
@@ -171,8 +171,8 @@ export const deletePriceByID = async (ID) => {
   return deletedPrice;
 };
 // POST PRICES
-export const postPrice = (payload) => {
-  axios.post(`${BASE_URL}/prices`, payload);
+export const postPrice = async (payload) => {
+ await axios.post(`${BASE_URL}/prices`, payload);
 };
 
  // GET ALL OURTEAM
@@ -197,8 +197,8 @@ export const deleteOurTeamByID = async (ID) => {
 };
 
 // POST OURTEAM
-export const postOurTeam = (payload) => {
-  axios.post(`${BASE_URL}/ourteam`, payload);
+export const postOurTeam = async (payload) => {
+  await axios.post(`${BASE_URL}/ourteam`, payload);
 };
 
   // GET ALL COMMENTS
@@ -222,8 +222,8 @@ export const deleteCommentByID = async (ID) => {
 };
 
 // POST COMMENT
-export const postComment = (payload) => {
-  axios.post(`${BASE_URL}/comment`, payload);
+export const postComment = async (payload) => {
+ await axios.post(`${BASE_URL}/comment`, payload);
 };
 
   // GET ALL CONTACTUS
@@ -248,6 +248,6 @@ export const deleteContactUsByID = async (ID) => {
 };
 
 // POST CONTACTUS
-export const postContactUs = (payload) => {
-  axios.post(`${BASE_URL}/contactus`, payload);
+export const postContactUs = async (payload) => {
+await  axios.post(`${BASE_URL}/contactus`, payload);
 };
