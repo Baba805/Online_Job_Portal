@@ -1,5 +1,5 @@
 import { Box, Button, Container, Grid, TextField } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import homeStyle from './Home.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import PlaceIcon from '@mui/icons-material/Place';
@@ -11,9 +11,36 @@ import { getServices, getvacancies, getBlogs, getPrices, getComment } from '../.
 import { Slide } from 'react-slideshow-image';
 
 import 'react-slideshow-image/dist/styles.css';
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 
 
 function EmployeeHome() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+
+    emailjs.sendForm('service_5rjo0bp', 'template_8uznhv8', form.current, 'LDz_njkj1pJTj71qE')
+      .then((result) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your message has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        
+
+        console.log(result.text);
+        console.log('message send');
+        e.target.reset()
+
+      }, (error) => {
+        console.log(error.text);
+      });
+  };
 
   const [comment, setComment] = useState([])
   const [services, setServices] = useState([]);
@@ -149,8 +176,7 @@ function EmployeeHome() {
       </div>
 
 
-      <section className={homeStyle.info}>
-        <Container maxWidth='xl' className={homeStyle.info_all_div} >
+      <section className={homeStyle.info }>
           <div className={homeStyle.info_left} >
             <img className={homeStyle.left_img} src="http://sbtechnosoft.com/guidepro/images/people-group.png" alt="" />
             <div className={homeStyle.title} >
@@ -158,11 +184,9 @@ function EmployeeHome() {
               <p className={homeStyle.left_p}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt .</p>
             </div>
           </div>
-          <div className={homeStyle.info_right} >
-            <div className={homeStyle.a}>
-              {/* <img src="http://sbtechnosoft.com/guidepro/images/strip-square.png" style={{marginTop : '50px'}}  height="300px" alt="" /> */}
-            </div>
-            <div className={homeStyle.right_right} >
+          <div className={homeStyle.right_right} >
+            
+            
               <div className={homeStyle.developer} >
                 <img src="http://sbtechnosoft.com/guidepro/images/laptop.png" alt="" />
                 <h5 className={homeStyle.right_h5}  >DEVELOPER  </h5>
@@ -181,9 +205,8 @@ function EmployeeHome() {
                 <span>2 Jobs</span>
 
               </div>
-            </div>
+            
           </div>
-        </Container>
 
       </section>
 
@@ -391,10 +414,13 @@ function EmployeeHome() {
         <p>Get weekly top new jobs delivered to your inbox</p>
         <Grid container spacing={2}>
           <Grid xs={12} style={{ position: 'relative', display: 'inline-block', marginTop: '40px' }} >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <input className={homeStyle.subscription_input} type='email' placeholder='Enter Email Adress' />
-              <button className={homeStyle.subscription_button} type='submit'>SUBCRIBE</button>
-            </div>
+          <form ref={form} onSubmit={sendEmail} style={{margin : '0px auto'}} >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+                <input name="user_email" className={homeStyle.subscription_input} type='email' placeholder='Enter Email Adress' />
+                <button type='submit' value="Send" className={homeStyle.subscription_button}>SUBCRIBE</button>
+              </div>
+            </form>
           </Grid>
 
         </Grid>

@@ -13,7 +13,12 @@ import 'react-slideshow-image/dist/styles.css';
 
 import homeStyle from './Home.module.css'
 import './home.css'
+
+
+
 function Home() {
+ 
+
   const [comment, setComment] = useState([])
 
   const [services, setServices] = useState([]);
@@ -67,9 +72,7 @@ function Home() {
     indicators: true,
     arrows: true
   }
-  const images = [
-    `${comment.imageUrl}`
-  ];
+ 
 
   const sortDataRecent = () => {
     const sortedData = [...jobs].sort((a, b) => {
@@ -98,12 +101,7 @@ function Home() {
   };
   const [sort, setSort] = useState(true)
 
-  function handleSearch(e) {
 
-    getvacancies(e.target.value).then((res) => {
-      setJobs(res);
-    });
-  }
 
 
   return (
@@ -139,8 +137,7 @@ function Home() {
       </div>
 
 
-      <section className={homeStyle.info}>
-        <Container maxWidth='xl' className={homeStyle.info_all_div} >
+      <section className={homeStyle.info }>
           <div className={homeStyle.info_left} >
             <img className={homeStyle.left_img} src="http://sbtechnosoft.com/guidepro/images/people-group.png" alt="" />
             <div className={homeStyle.title} >
@@ -148,11 +145,9 @@ function Home() {
               <p className={homeStyle.left_p}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt .</p>
             </div>
           </div>
-          <div className={homeStyle.info_right} >
-            <div className={homeStyle.a}>
-              {/* <img src="http://sbtechnosoft.com/guidepro/images/strip-square.png" style={{marginTop : '50px'}}  height="300px" alt="" /> */}
-            </div>
-            <div className={homeStyle.right_right} >
+          <div className={homeStyle.right_right} >
+            
+            
               <div className={homeStyle.developer} >
                 <img src="http://sbtechnosoft.com/guidepro/images/laptop.png" alt="" />
                 <h5 className={homeStyle.right_h5}  >DEVELOPER  </h5>
@@ -171,9 +166,8 @@ function Home() {
                 <span>2 Jobs</span>
 
               </div>
-            </div>
+            
           </div>
-        </Container>
 
       </section>
 

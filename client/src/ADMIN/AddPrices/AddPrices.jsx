@@ -2,22 +2,9 @@ import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { postPrice } from '../../Api/request';
 import Swal from 'sweetalert2';
-import {
-    MDBContainer,
-    MDBTabs,
-    MDBTabsItem,
-    MDBTabsLink,
-    MDBTabsContent,
-    MDBTabsPane,
-    MDBBtn,
-    MDBIcon,
-    MDBInput,
-    MDBCheckbox
-}
-    from 'mdb-react-ui-kit';
+
 import * as yup from "yup";
-import { Box, Button, Container } from '@mui/material';
-import { Grid } from 'antd';
+import { Box, Button, Container, Grid } from '@mui/material';
 import pricingStyle from './AddPrices.module.css';
 
 
@@ -72,7 +59,13 @@ const AddPrices = () => {
     return (
         <>
              <main  >
-            
+             
+
+        <Container maxWidth='xl'>
+          <Box sx={{ flexGrow: 1 }}>
+
+            <Grid container spacing={1}   >
+              <Grid item xs={12} sm={2} >
         <form onSubmit={formik.handleSubmit}  >
          <div style={{margin : '0px auto'}} >
              
@@ -184,6 +177,10 @@ const AddPrices = () => {
           </div>
          
         </form>
+        </Grid>
+        </Grid>
+        </Box>
+        </Container>
         
       </main>
         </>

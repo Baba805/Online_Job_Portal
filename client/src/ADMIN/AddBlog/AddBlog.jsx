@@ -2,22 +2,10 @@ import { Button, Grid, TextField } from '@mui/material'
 import React from 'react'
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import { postBlog, postPrice } from '../../Api/request';
+import { postBlog } from '../../Api/request';
 import Swal from 'sweetalert2';
 
-import {
-  MDBContainer,
-  MDBTabs,
-  MDBTabsItem,
-  MDBTabsLink,
-  MDBTabsContent,
-  MDBTabsPane,
-  MDBBtn,
-  MDBIcon,
-  MDBInput,
-  MDBCheckbox
-}
-  from 'mdb-react-ui-kit';
+
 import * as yup from "yup";
 import { Box, Container } from '@mui/material';
 

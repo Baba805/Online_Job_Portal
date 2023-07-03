@@ -120,72 +120,63 @@
     border: none;
 }
 
-.info {
+.info{
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.57143;
     font-weight: 400;
-    /* background: rgb(255, 97, 88);
-    background: -moz-linear-gradient(90deg, rgba(255, 97, 88, 1) 0%, rgba(255, 97, 88, 1) 50%, rgba(55, 35, 84, 1) 50%, rgba(55, 35, 84, 1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(255, 97, 88, 1) 0%, rgba(255, 97, 88, 1) 50%, rgba(55, 35, 84, 1) 50%, rgba(55, 35, 84, 1) 100%); */
+     background: rgb(255, 97, 88);
+    /* background: -moz-linear-gradient(90deg, rgba(255, 97, 88, 1) 0%, rgba(255, 97, 88, 1) 50%, rgba(55, 35, 84, 1) 50%, rgba(55, 35, 84, 1) 100%); */
+    /* background: -webkit-linear-gradient(90deg, rgba(255, 97, 88, 1) 0%, rgba(255, 97, 88, 1) 50%, rgba(55, 35, 84, 1) 50%, rgba(55, 35, 84, 1) 100%);  */
     background: linear-gradient(90deg, rgba(255, 97, 88, 1) 0%, rgba(255, 97, 88, 1) 50%, rgba(55, 35, 84, 1) 50%, rgba(55, 35, 84, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6158", endColorstr="#3c2064", GradientType=1);
+    /* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6158", endColorstr="#3c2064", GradientType=1); */
     color: #ffffff;
-
-}
-
-.info_all_div {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    margin-top: 40px;
+  
 }
 
-.info_left {
 
+.info_left{
+    
     height: 230px;
     display: flex;
     align-items: center;
+    width: 50%;
+    height: 100%;
 }
 
-.left_img {
-    top: 36px;
-    left: -28px;
-    width: 250px;
-}
 
-.title {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-right: 20px;
+.title{
+    
+    max-width: 250px;
 }
-
-.left_h2 {
+.left_h2{
     color: #fff;
     font-size: 24px;
     font-weight: 700;
 }
-
-.left_p {
+.left_p{
     margin-bottom: 0;
     font-size: 15px;
-    width: 400px;
+    /* width: 400px; */
 }
 
-.info_right {
-    background: url('http://sbtechnosoft.com/guidepro/images/strip-square.png') no-repeat center left / auto 100% transparent;
-
+.info_right{
+    /* background: url('http://sbtechnosoft.com/guidepro/images/strip-square.png') no-repeat center left / auto 100% transparent; */
 }
 
-.right_right {
-    margin-left: 10px;
+.right_right{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 700px;
+    width: 50%;
+
 }
 
-.right_h5 {
+.right_h5{
     font-size: 15px;
     font-weight: 600;
     border-top: 1px solid #67597b;
@@ -195,7 +186,6 @@
     text-transform: uppercase;
     margin-bottom: 0;
 }
-
 
 .third_h3 {
     color: #3c2064;
