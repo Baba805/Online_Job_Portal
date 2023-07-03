@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import FooterStyle from './Footer.module.css'
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -10,9 +10,29 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import GoogleIcon from '@mui/icons-material/Google';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import emailjs from '@emailjs/browser';
+
 
 
 function Footer() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    
+
+    emailjs.sendForm('service_5rjo0bp', 'template_8uznhv8', form.current, 'LDz_njkj1pJTj71qE')
+      .then((result) => {
+
+        console.log(result.text);
+        console.log('message send');
+        e.target.reset()
+
+      }, (error) => {
+        console.log(error.text);
+      });
+  };
+
   return (
     <footer className={FooterStyle.footer}>
       <Container maxWidth='lg'>
@@ -24,10 +44,14 @@ function Footer() {
               <Link to='/'><img src='http://sbtechnosoft.com/guidepro/images/footer-logo.png'></img></Link>
             </Grid>
             <Grid xs={9}>
+              <form ref={form} onSubmit={sendEmail}  >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'end' }}>
-                <input className={FooterStyle.input} type='email' placeholder='Enter Email Adress' />
-                <button type='submit' className={FooterStyle.button}>SUBCRIBE</button>
+
+                <input  name="user_email" className={FooterStyle.input} type='email' placeholder='Enter Email Adress' />
+                <button type='submit' value="Send" className={FooterStyle.button}>SUBCRIBE</button>
               </div>
+                </form>
+
             </Grid>
 
           </Grid>
@@ -77,9 +101,9 @@ function Footer() {
                   <li style={{ listStyle: 'none' }} > <Link className={FooterStyle.title_link} to='/home'>HOME</Link> </li>
                   <li style={{ listStyle: 'none' }} > <Link className={FooterStyle.title_link} to='/aboutus'>ABOUT US </Link> </li>
                   <li style={{ listStyle: 'none' }} > <Link className={FooterStyle.title_link} to='/pricing'>PRICING</Link> </li>
-                  <li style={{ listStyle: 'none' }} > <Link className={FooterStyle.title_link} to='/joblist'>JOB LIST</Link> </li>
+                  <li style={{ listStyle: 'none' }} > <Link className={FooterStyle.title_link} to='/jobs'>JOB LIST</Link> </li>
                   <li style={{ listStyle: 'none' }} > <Link className={FooterStyle.title_link} to='/ourteam'>OUR TEAM</Link> </li>
-                  <li style={{ listStyle: 'none' }} > <Link className={FooterStyle.title_link} to='/blogdetails'>BLOG</Link> </li>
+                  <li style={{ listStyle: 'none' }} > <Link className={FooterStyle.title_link} to='/bloggrids'>BLOG</Link> </li>
                   <li style={{ listStyle: 'none' }} > <Link className={FooterStyle.title_link} to='contactus'>CONTACT US</Link> </li>
                 </ul>
               </div>

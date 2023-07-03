@@ -53,7 +53,7 @@ function AddComment() {
     <main>
     <form onSubmit={formik.handleSubmit}>
       <div className='suggestions-text'>
-        <p>Product add</p>
+        <p>Comments add</p>
         {/* <p className='suggestions-text-2p'>Müştərilərimizin düşüncələri önəmlidir</p> */}
       </div>
       <div className='input-div'>

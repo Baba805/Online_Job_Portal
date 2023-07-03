@@ -25,6 +25,7 @@ import AddServices from "../ADMIN/AddServices/AddServices";
 import AddPrices from "../ADMIN/AddPrices/AddPrices";
 import AddBlog from "../ADMIN/AddBlog/AddBlog";
 import AddComment from "../ADMIN/AddComment/AddComment";
+import Apply from "../MAIN/Pages/Apply/Apply";
 
 
 
@@ -95,6 +96,11 @@ export const ROUTES = [
                 path: '/jobs',
                 element: <Jobss/>
             },
+            
+            {
+                path : 'apply',
+                element : <Apply/>
+            }
            
 
         ],

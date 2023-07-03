@@ -365,6 +365,10 @@
     background: #ff6158;
     border-radius: 3px;
     transition-duration: 0.5s;
+    text-align: center;
+}
+.jobs_button_apply:hover{
+    color: white;
 }
 
 .jobs_button_full{

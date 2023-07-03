@@ -71,10 +71,12 @@ const AddPrices = () => {
     })
     return (
         <>
-             <main>
-        <form onSubmit={formik.handleSubmit}>
-          <div className='suggestions-text'>
-            <p>Product add</p>
+             <main  >
+            
+        <form onSubmit={formik.handleSubmit}  >
+         <div style={{margin : '0px auto'}} >
+             
+            <p>Prices add</p>
             {/* <p className='suggestions-text-2p'>Müştərilərimizin düşüncələri önəmlidir</p> */}
           </div>
           <div className='input-div'>
@@ -180,7 +182,9 @@ const AddPrices = () => {
               </Alert>
             </Snackbar> */}
           </div>
+         
         </form>
+        
       </main>
         </>
     )

@@ -90,7 +90,7 @@ function Navbar() {
                   >
                     <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/'>PAGES</Link>
                   </Dropdown> </li>
-                  <li style={{ listStyle: 'none' }}  ><Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/joblist'>JOBS</Link> </li>
+                  <li style={{ listStyle: 'none' }}  ><Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/jobs'>JOBS</Link> </li>
                   <li style={{ listStyle: 'none' }}  > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/bloggrids'>BLOG</Link></li>
                   <li style={{ listStyle: 'none' }}  > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/contactus'>CONTACT US</Link> </li>
 
