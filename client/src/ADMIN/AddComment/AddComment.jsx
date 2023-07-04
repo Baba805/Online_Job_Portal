@@ -35,7 +35,7 @@ function AddComment() {
             timer: 1500
         })
         actions.resetForm();
-        navigate('/admin/comment')
+        navigate('/admin/comments')
 
     }
     const formik = useFormik({

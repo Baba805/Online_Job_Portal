@@ -87,7 +87,7 @@ function Comments() {
                 </div >
                 <img src="http://sbtechnosoft.com/guidepro/images/quote.png" alt="" />
               </div>
-              <div style={{display : 'flex', justifyContent : 'center', alignItems : 'center'}} >
+              <div style={{display : 'flex', justifyContent : 'space-around' , alignItems : 'center', flexDirection: 'column', height : '100px'}} >
               <MDBBtn className={{textAlign : 'center'}} type='submit' color='danger' onClick={() => {
                       Swal.fire({
                         title: 'Are you sure?',
@@ -110,6 +110,8 @@ function Comments() {
                         }
                       })
                     }}   >Delete</MDBBtn>
+                        <MDBBtn type='submit' color='warning'  > <Link style={{color : 'white'}} to={`/admin/comments/edit/${comments._id}`} >Edit</Link> </MDBBtn>
+
               </div>
             </>
           )

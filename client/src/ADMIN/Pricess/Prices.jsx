@@ -54,8 +54,8 @@ function Prices() {
                         <li className={PricesStyle.price_li} > {price.service_four} </li>
                         <li className={PricesStyle.price_li} > {price.service_five} </li>
                       </ul>
-                      <div style={{display : 'flex', justifyContent : 'space-between', alignItems:'center', flexDirection : 'column' , height : '100px'}} >
-                      <button className={PricesStyle.price_button} type='button'    > Sign Up </button>
+                      <div style={{display : 'flex', justifyContent : 'space-between', alignItems:'center', flexDirection : 'column' , height : '150px'}} >
+                      <button className={PricesStyle.price_button} type='button'> Sign Up </button>
                       <MDBBtn type='submit' color='danger' onClick={() => {
                       Swal.fire({
                         title: 'Are you sure?',
@@ -78,6 +78,8 @@ function Prices() {
                         }
                       })
                     }}   >Delete</MDBBtn>
+                        <MDBBtn type='submit' color='warning'  > <Link to={`/admin/prices/edit/${price._id}`} >Edit</Link> </MDBBtn>
+
                       </div>
                       
 

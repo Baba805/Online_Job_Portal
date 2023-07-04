@@ -72,6 +72,8 @@ function Services() {
                         }
                       })
                     }}  >Delete</MDBBtn>
+                        <MDBBtn type='submit' color='warning' className="mb-4 w-100" > <Link to={`/admin/services/edit/${service._id}`} >Edit</Link> </MDBBtn>
+
 
                   </Grid>
 

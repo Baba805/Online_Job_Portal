@@ -26,6 +26,9 @@ import AddPrices from "../ADMIN/AddPrices/AddPrices";
 import AddBlog from "../ADMIN/AddBlog/AddBlog";
 import AddComment from "../ADMIN/AddComment/AddComment";
 import Apply from "../MAIN/Pages/Apply/Apply";
+import EditBlog from "../ADMIN/EditBlog/EditBlog";
+import EditPrices from "../ADMIN/EditPrices/EditPrices";
+import EditComment from "../ADMIN/EditComments/EditComment";
 
 
 
@@ -124,12 +127,20 @@ export const ROUTES = [
                 element : <Prices/>
             },
             {
+                path : 'prices/edit/:id',
+                element : <EditPrices/>
+            },
+            {
                 path : 'comments',
                 element : <Comments/>
             },
             {
                 path : 'blogs',
                 element : <Blogs/>
+            },
+            {
+                path : 'blogs/edit/:id',
+                element : <EditBlog/>
             },
             {
                 path : 'login',
@@ -150,6 +161,10 @@ export const ROUTES = [
             {
                 path : 'addcomment',
                 element : <AddComment/>
+            },
+            {
+                path : 'comments/edit/:id',
+                element : <EditComment/>
             }
         ]
 

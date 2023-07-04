@@ -58,7 +58,7 @@ function AddBlog() {
             <Grid item xs={12} sm={6} md={6} style={{ margin: '0px auto' }} >
               <form onSubmit={formik.handleSubmit}>
                 <div className='suggestions-text'>
-                  <p>Product add</p>
+                  <p>Add Blog</p>
                   {/* <p className='suggestions-text-2p'>Müştərilərimizin düşüncələri önəmlidir</p> */}
                 </div>
                 <div className='input-div'>

@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 import * as yup from "yup";
 import { Box, Button, Container, Grid } from '@mui/material';
-import pricingStyle from './AddPrices.module.css';
+// import pricingStyle from './AddPrices.module.css';
 
 
 import React from 'react'

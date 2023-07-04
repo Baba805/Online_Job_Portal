@@ -34,32 +34,27 @@ function Home() {
 
   useEffect(() => {
     getComment().then((res) => {
-      console.log("salam");
       setComment(res)
     })
   }, [])
   useEffect(() => {
     getServices().then((res) => {
-      console.log("salam");
       setServices(res)
     })
   }, [])
 
   useEffect(() => {
     getvacancies().then((res) => {
-      console.log("salam");
       setJobs(res)
     })
   }, [])
   useEffect(() => {
     getBlogs().then((res) => {
-      console.log("salam");
       setBlogs(res)
     })
   }, [])
   useEffect(() => {
     getPrices().then((res) => {
-      console.log("salam");
       setPrices(res)
     })
   }, [])
