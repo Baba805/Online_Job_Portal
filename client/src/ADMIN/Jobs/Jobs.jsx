@@ -1,6 +1,6 @@
 import { Box, Button, Container, Grid, TextField } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { deleteVacantieByID, getvacancies } from '../../Api/request';
 import JobsStyle from './Jobs.module.css'
 import { MDBBtn } from 'mdb-react-ui-kit';
@@ -123,7 +123,7 @@ function Jobs() {
                           <p className={JobsStyle.jobs_title_p_} style={{ marginTop: '10px' }} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
                         </div>
                         <div className={JobsStyle.jobs_buttons} >
-                          <button className={JobsStyle.jobs_button_apply} type='button'   >Apply Now</button>
+                        <button className={JobsStyle.jobs_button_apply} type='button'   >Apply Now</button>
                           <button className={JobsStyle.jobs_button_full}  >{vacancie.time}</button>
                           <MDBBtn type='submit' color='danger'  onClick={() => {
                       Swal.fire({
@@ -147,6 +147,8 @@ function Jobs() {
                         }
                       })
                     }}  >Delete</MDBBtn>
+                        <MDBBtn type='submit' color='warning' style={{marginTop : '10px', maxWidth : '94px'}} > <Link to={`/admin/jobs/edit/${vacancie._id}`} style={{color : 'white'}} >Edit</Link> </MDBBtn>
+
                         </div>
                       </div>
 

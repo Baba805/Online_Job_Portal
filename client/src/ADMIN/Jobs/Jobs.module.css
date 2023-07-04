@@ -53,6 +53,8 @@
 .jobs_buttons{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .jobs_button_apply{

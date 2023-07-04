@@ -332,7 +332,7 @@ app.post('/api/servives/', async (req, res) => {
 app.put('/api/servives/:id', async (req, res) => {
   const { name, title, imageUrl } = req.body;
   const id = req.params.id;
-  const existedService = servicesModel.findByIdAndUpdate(id, {
+  const existedService = await servicesModel.findByIdAndUpdate(id, {
     name: name,
     title: title,
     imageUrl: imageUrl

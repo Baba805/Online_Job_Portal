@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import contactUsStyle from './ContactUs.module.css'
 import { Box, Container, Grid } from '@mui/material'
-import { useNavigate } from 'react-router-dom';
-import { getComment, getContactUs } from '../../../Api/request';
+import { getComment } from '../../../Api/request';
 
 import { MDBBtn, MDBInput } from 'mdb-react-ui-kit';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -69,7 +68,6 @@ Swal.fire({
 
 
 
-  const navigate = useNavigate();
 
  
 
@@ -101,9 +99,7 @@ Swal.fire({
 
   /* eslint-enable no-template-curly-in-string */
 
-  const onFinish = (values) => {
-    console.log(values);
-  };
+ 
   return (
     <>
 
@@ -127,7 +123,7 @@ Swal.fire({
 
 
                 <form ref={form} onSubmit={sendEmail}  >
-                  <MDBInput type="text" name="user_name" label='Name'  style={{marginBottom : '40px'}} />
+                  <MDBInput type="text" name="to_name" label='Name'  style={{marginBottom : '40px'}} />
                   <MDBInput type="email" name="user_email" label='Email'  style={{marginBottom : '40px'}} />
                   <label  style={{marginBottom : '20px'}} >Please describe what your need</label>
                   <textarea style={{ marginBottom: '50px' }} name="message" class="form-control" id="exampleFormControlTextarea4" label='Introduction ' type='tel' rows="3" ></textarea>

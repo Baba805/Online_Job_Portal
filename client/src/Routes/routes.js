@@ -29,6 +29,8 @@ import Apply from "../MAIN/Pages/Apply/Apply";
 import EditBlog from "../ADMIN/EditBlog/EditBlog";
 import EditPrices from "../ADMIN/EditPrices/EditPrices";
 import EditComment from "../ADMIN/EditComments/EditComment";
+import EditJobs from "../ADMIN/EditJobs/EditJobs";
+import EditServices from "../ADMIN/EditServices/EditServices";
 
 
 
@@ -165,6 +167,14 @@ export const ROUTES = [
             {
                 path : 'comments/edit/:id',
                 element : <EditComment/>
+            },
+            {
+                path : 'jobs/edit/:id',
+                element : <EditJobs/>
+            },
+            {
+                path : 'services/edit/:id',
+                element : <EditServices/>
             }
         ]
 

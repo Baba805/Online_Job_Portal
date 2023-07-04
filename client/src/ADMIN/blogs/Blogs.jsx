@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { deleteBlogByID, getBlogs } from '../../Api/request';
-import { Box, Button, Container, Grid, TextField } from '@mui/material'
+import { Box, Button, Container, Grid } from '@mui/material'
 import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom'
 import BlogStyle from './Blog.module.css'
@@ -87,7 +87,7 @@ function Blogs() {
                             }
                           })
                         }}  >Delete</MDBBtn>
-                        <MDBBtn type='submit' color='warning' className="mb-4 w-100" > <Link to={`/admin/blogs/edit/${blog._id}`} >Edit</Link> </MDBBtn>
+                        <MDBBtn type='submit' color='warning' className="mb-4 w-100" > <Link to={`/admin/blogs/edit/${blog._id}`} style={{color : 'white'}} >Edit</Link> </MDBBtn>
 
                       </div>
 

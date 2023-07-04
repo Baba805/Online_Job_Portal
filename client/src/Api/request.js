@@ -63,6 +63,15 @@ export const getServices = async () => {
   return services;
 }
 
+// GET SERVICES BY ID
+export const getServicesByID = async (ID) => {
+  let globalData;
+  await axios.get(`${BASE_URL}/servives/${ID}`).then((res) => {
+    globalData = res.data
+  });
+  return globalData;
+};
+
 //delete SERVICES by  ID
 export const deleteServicesByID = async (ID) => {
   let deletedServices;
@@ -75,6 +84,11 @@ export const deleteServicesByID = async (ID) => {
 // POST SEERVICES
 export const postServices = async (payload) => {
   await axios.post(`${BASE_URL}/servives`, payload);
+};
+
+// EDIT SEERVICES
+export const editServices = (ID, payload) => {
+  axios.put(`${BASE_URL}/servives/${ID}`, payload)
 };
 
 // GET ALL VACANCIES
@@ -123,6 +137,11 @@ export const deleteVacantieByID = async (ID) => {
 export const postVacancies = async (payload) => {
   await axios.post(`${BASE_URL}/vacancies`, payload)
 }
+
+// EDIT VACANCIES
+export const editVacancies = (ID, payload) => {
+  axios.put(`${BASE_URL}/vacancies/${ID}`, payload)
+};
 
 
 
