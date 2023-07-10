@@ -38,6 +38,8 @@ function Navbar() {
                 <li style={{ listStyle: 'none' }}  > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/admin/blogs'>BLOG</Link></li>
                 <li style={{ listStyle: 'none' }}  > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/admin/prices'>Prices</Link> </li>
                 <li style={{ listStyle: 'none' }}  > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/admin/comments'>Comments</Link> </li>
+                <li style={{ listStyle: 'none' }}  > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/admin/ourteam'>Our Team</Link> </li>
+                <li style={{ listStyle: 'none' }}  > <Link className={NavbarStyle.a} style={{ textDecoration: 'none', transition: 'all 0.3s ease 0s' }} to='/admin/users'>Users</Link> </li>
                 
               </ul>
             </Grid>

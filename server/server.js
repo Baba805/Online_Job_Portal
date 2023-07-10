@@ -17,6 +17,13 @@ const ourTeamModel = require('./Models/ourteam.model');
 const commentModel = require('./Models/comment.model');
 const contactUstModel = require('./Models/contactUs.model');
 const adminModel = require('./Models/admin.model');
+const cvModel = require('./Models/cv.mode');
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
+const FileUpload = require('./Models/fileapload.model');
+const fileUploadSchema = require('./Models/fileapload.model');
+const FileUploadModel = require('./Models/fileapload.model');
+const uuid = require('uuid')
 
 app.use(cors())
 // parse application/x-www-form-urlencoded
@@ -30,6 +37,138 @@ app.use(bodyParser.json())
 mongoose.connect('mongodb+srv://Babakazimov:Babakazimov2002@players.pxnytuh.mongodb.net/?retryWrites=true&w=majority').then(() => {
   console.log('Mongo DB connected');
 })
+
+const DIR = './uploads/';
+app.use('/uploads', express.static('uploads'));
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, DIR);
+    },
+    filename: (req, file, cb) => {
+        const fileName = file.originalname.toLowerCase().split(' ').join('-');
+        cb(null, uuid.v4() + '-' + fileName)
+    }
+});
+var upload = multer({
+    storage: storage,
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg" || file.mimetype=="file/pdf") {
+            cb(null, true);
+        } else {
+            cb(null, false);
+            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+        }
+    }
+});
+
+// app.get('/api/files',async(req,res)=>{
+//   const employees = await FileUploadModel.find();
+//   res.json(employees);
+// })
+
+// app.post('/api/files',upload.single('file'),async(req,res)=>{
+//   const url = req.protocol + '://' + req.get('host');
+//   const newEmployee = new FileUploadModel({
+//       name: req.body.name,
+//       file: url + '/uploads/' + req.file.filename
+//   })
+//   newEmployee.save().then(result => {
+//       res.status(201).json({
+//           message: "Employee posted successfully!",
+//           userCreated: newEmployee
+//       })
+//   }).catch(err => {
+//       console.log(err),
+//           res.status(500).json({
+//               error: err
+//           });
+//   })
+// })
+
+// file upload
+// app.use(bodyParser.urlencoded({extended:false}))
+// const DIR = './uploads/';
+// app.use('/uploads', express.static('uploads'));
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, DIR);
+//     },
+//     filename: (req, file, cb) => {
+//         const fileName = file.originalname.toLowerCase().split(' ').join('-');
+//         cb(null, uuid.v4() + '-' + fileName)
+//     }
+// });
+// var upload = multer({
+//     storage: storage,
+//     fileFilter: (req, file, cb) => {
+//         if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+//             cb(null, true);
+//         } else {
+//             cb(null, false);
+//             return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
+//         }
+//     }
+// });
+
+// app.post('/imagees',upload.single('profileImg'),async(req,res)=>{
+//   const url = req.protocol + '://' + req.get('host');
+//   const newImage = new ImageModel({
+//       profileImg: url + '/uploads/' + req.file.filename
+//   })
+//   newImage.save().then(result => {
+//       res.status(201).json({
+//           message: "Image posted successfully!",
+//           userCreated: newImage
+//       })
+//   }).catch(err => {
+//       console.log(err),
+//           res.status(500).json({
+//               error: err
+//           });
+//   })
+// })
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     // Set the destination folder where the uploaded files will be saved
+//     cb(null, 'uploads/');
+//   },
+//   filename: (req, file, cb) => {
+//     // Set the filename for the uploaded file
+//     cb(null, Date.now() + '-' + file.originalname);
+//   }
+// });
+
+// const upload = multer({ storage });
+
+
+// app.post('/upload', upload.single('file'), (req, res) => {
+//   // File upload middleware
+//   const file = req.file;
+//   // Create a new instance of the FileUpload model
+//   const newFileUpload = new FileUpload({
+//     filename: file.filename,
+//     path: file.path
+//   });
+//   // Save the file upload to the database
+//   newFileUpload.save((err, savedFileUpload) => {
+//     if (err) {
+//       return res.status(500).json({ error: err.message });
+//     }
+//     return res.status(200).json(savedFileUpload);
+//   });
+// });
+
+
+// app.delete('/imagees/:id',async(req,res)=>{
+//   const id = req.params.id;
+//   const deleted = await ImageModel.findByIdAndDelete(id);
+//   const idx = deleted.profileImg.indexOf("uploads/");
+//   const imageName = deleted.profileImg.substr(idx);
+//   fs.unlinkSync('./'+imageName);
+//   res.status(200).send({
+//       message: 'deleted successfully!'
+//   })
+// })
 
 
 //verify JWT
@@ -651,6 +790,60 @@ app.put('/api/contactus/:id', async (req, res) => {
     Introduction: Introduction
   })
   res.status(201).send(existedComment)
+});
+
+// GET Cv  
+app.get('/api/cv', async (req, res) => {
+  const cv = await cvModel.find();
+  res.status(200).json(cv)
+})
+
+// GET Cv BY ID
+
+app.get('/api/cv/:id', async (req, res) => {
+  const ID = req.params.id;
+  const cv = await cvModel.findById(ID)
+  res.status(200).json(cv)
+})
+
+// DELETE Cv BY ID
+
+app.delete('/api/cv/:id', async (req, res) => {
+  const ID = req.params.id;
+  const deletedCv = await cvModel.findByIdAndDelete(ID)
+  res.status(203).send(deletedCv)
+})
+
+// POST cv 
+app.post('/api/cv', upload.single('file'), async (req, res) => {
+  const url = req.protocol + '://' + req.get('host');
+
+  console.log(req.file)
+  
+  const { name, email, phone, Introduction } = req.body;
+  const newCv = new cvModel({
+    name: name,
+    phone: phone,
+    Introduction: Introduction,
+    email : email,
+    file: url + '/uploads/' + req.file.filename,
+  });
+  await newCv.save();
+  res.status(200).send(newCv)
+});
+
+// EDIT Cv
+app.put('/api/cv/:id', async (req, res) => {
+  const{name, email, phone, Introduction , file} = req.body;
+  const id = req.params.id;
+  const existedCv = await cvModel.findByIdAndUpdate(id, {
+    name: name,
+    phone: phone,
+    Introduction: Introduction,
+    file : file,
+    email : email
+  })
+  res.status(201).send(existedCv)
 });
 
 

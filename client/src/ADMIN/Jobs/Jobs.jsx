@@ -7,6 +7,8 @@ import { MDBBtn } from 'mdb-react-ui-kit';
 import Swal from 'sweetalert2';
 
 function Jobs() {
+  const [search , setSearch] = useState('');
+
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     getvacancies().then((res) => {
@@ -65,7 +67,7 @@ function Jobs() {
         <Container maxWidth='xl'  >
           <div  >
             <TextField
-              onChange={(e) => handleSearch(e)}
+              onChange={(e) => setSearch(e.target.value)}
               style={{ marginBottom: "30px" }}
               id="outlined-basic"
               label="Search Artist"
@@ -108,7 +110,10 @@ function Jobs() {
 
 
             <Grid container spacing={2}>
-              {jobs && jobs.map((vacancie) => {
+              {jobs && jobs
+               .filter((item)=>{
+                return search.toLocaleLowerCase() === "" ? item : item.name.toLocaleLowerCase().includes(search)
+              }).map((vacancie) => {
                 return (
                   <>
                     <Grid item xs={6} md={4} >

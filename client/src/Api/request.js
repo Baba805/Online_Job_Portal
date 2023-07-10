@@ -34,7 +34,7 @@ export const AdminLogin = async (payload) => {
 export const getEmployee = async () => {
   let employee;
   await axios.get(`${BASE_URL}/employee`).then((res) => {
-    employee = res.data
+    employee = res.data.emploees
   })
 
   return employee;
@@ -46,7 +46,7 @@ export const getEmployee = async () => {
 export const getEmployer = async () => {
   let employer;
   await axios.get(`${BASE_URL}/employer`).then((res) => {
-    employer = res.data
+    employer = res.data.emploers
   })
 
   return employer;
@@ -336,3 +336,67 @@ export const postContactUs = async (payload) => {
 export const editContactUsById = (ID, payload) => {
   axios.put(`${BASE_URL}/contactus/${ID}`, payload)
 };
+
+
+// GET ALL CV
+
+export const getCv = async () => {
+  let cv;
+  await axios.get(`${BASE_URL}/cv`).then((res) => {
+    cv = res.data
+  })
+
+  return cv
+}
+
+export const getCvById = async (ID) => {
+  let cv;
+  await axios.get(`${BASE_URL}/cv/${ID}`).then((res) => {
+    cv = res.data
+  })
+
+  return cv
+}
+
+//delete COMMENT by  ID
+export const deleteCvByID = async (ID) => {
+  let deleteCvByID;
+  await axios.delete(`${BASE_URL}/cv/${ID}`).then((res) => {
+    deleteCvByID = res.data
+  });
+
+  return deleteCvByID;
+};
+
+// POST CV
+export const postCv = async (payload) => {
+  await axios.post(`${BASE_URL}/cv`, payload);
+};
+
+// EDIT CV
+export const editCvById = (ID, payload) => {
+  axios.put(`${BASE_URL}/cv/${ID}`, payload)
+};
+
+
+export const getAllFile = async()=>{
+  let globalData;
+  await axios.get(`${BASE_URL}/files`)
+  .then((res)=>{
+      globalData = res.data;
+  })
+  return globalData;
+}
+export const postFile = async(payload)=>{
+  axios.post(`${BASE_URL}/files`,payload);
+
+  return {
+      data: payload,
+      message: 'post success!'
+  }
+}
+export const deleteImg = (id)=>{
+axios.delete(`${BASE_URL}/imagees/${id}`);
+}
+
+

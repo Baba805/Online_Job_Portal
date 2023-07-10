@@ -347,7 +347,7 @@ function EmployeeHome() {
                           <p className={homeStyle.jobs_title_p_} style={{ marginTop: '10px' }} > <img src="http://sbtechnosoft.com/guidepro/images/map-icon.png" alt="" /> {vacancie.location}  </p>
                         </div>
                         <div className={homeStyle.jobs_buttons} >
-                          <Link className={homeStyle.jobs_button_apply} to='/' >Apply Now</Link>
+                          <Link className={homeStyle.jobs_button_apply} to='/employeehome/apply' >Apply Now</Link>
                           <button className={homeStyle.jobs_button_full} >{ vacancie.time }</button>
                         </div>
                       </div>

@@ -31,6 +31,11 @@ import EditPrices from "../ADMIN/EditPrices/EditPrices";
 import EditComment from "../ADMIN/EditComments/EditComment";
 import EditJobs from "../ADMIN/EditJobs/EditJobs";
 import EditServices from "../ADMIN/EditServices/EditServices";
+import Admin_OurTeam from "../ADMIN/Admin_OurTeam/Admin_OurTeam";
+import AddOurTeam from "../ADMIN/AddOurTeam/AddOurTeam";
+import EditOurTeam from "../ADMIN/EditOurTeam/EditOurTeam";
+import Employers_CV from "../MAIN/Pages/Employers_CV/Employers_CV";
+import Users from "../ADMIN/users/Users";
 
 
 
@@ -98,14 +103,19 @@ export const ROUTES = [
                 element: <AddJob />
             },
             {
-                path: '/jobs',
+                path: '/jobss',
                 element: <Jobss/>
             },
             
             {
-                path : 'apply',
+                path : '/employeehome/apply',
                 element : <Apply/>
+            },
+            {
+                path : '/employerhome/cv',
+                element : <Employers_CV/>
             }
+            
            
 
         ],
@@ -175,6 +185,22 @@ export const ROUTES = [
             {
                 path : 'services/edit/:id',
                 element : <EditServices/>
+            },
+            {
+                path : 'ourteam',
+                element : <Admin_OurTeam/>
+            },
+            {
+                path : 'addourteam',
+                element : <AddOurTeam/>
+            },
+            {
+                path : 'ourteam/edit/:id',
+                element : <EditOurTeam/>
+            },
+            {
+                path : 'users',
+                element : <Users/>
             }
         ]
 

@@ -349,6 +349,9 @@ function EmployerHome() {
               <Grid item xs={12} sm={2} >
                 <button className={homeStyle.jobs_filter_btn}  > <Link className={homeStyle.jobs_filter_btn} style={{ border: 'none' }} to='/addjob'> Add New Job </Link> </button>
               </Grid>
+              <Grid item xs={12} sm={2} >
+                <button className={homeStyle.jobs_filter_btn}  > <Link style={{border : 'none'}} className={homeStyle.jobs_filter_btn} to='/employerhome/cv'> Look though CV  </Link> </button>
+              </Grid>
             </Grid>
           </Box>
         </Container>
